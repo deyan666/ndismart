@@ -1,9 +1,12 @@
 const express = require('express');
+const compression = require('compression');
 const path = require('path');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(compression());
 
 app.use((req, res, next) => {
   res.setHeader('X-Frame-Options', 'DENY');
