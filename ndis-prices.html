@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NDIS Price Guide 2024–25 | NDISmart</title>
+<meta name="description" content="Look up NDIS support item prices for 2024–25. Search by support item name or number. View national, remote and very remote price limits instantly.">
+<link rel="canonical" href="https://ndismart.netlify.app/ndis-prices.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NDIS Price Guide 2024–25 | NDISmart">
+<meta property="og:description" content="Search NDIS support item prices for 2024–25 — national, remote and very remote limits.">
+<meta property="og:url" content="https://ndismart.netlify.app/ndis-prices.html">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://ndismart.netlify.app/"},
+    {"@type":"ListItem","position":2,"name":"NDIS Price Guide","item":"https://ndismart.netlify.app/ndis-prices.html"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2744;
+  --teal: #4fc3a1;
+  --teal-dark: #3aab8a;
+  --teal-light: #e1f5ee;
+  --white: #ffffff;
+  --grey-50: #f8fafc;
+  --grey-100: #f1f5f9;
+  --grey-200: #e2e8f0;
+  --grey-300: #cbd5e1;
+  --grey-400: #94a3b8;
+  --grey-500: #64748b;
+  --grey-600: #475569;
+  --grey-700: #334155;
+  --grey-800: #1e293b;
+  --accent: #f59e0b;
+  --radius: 12px;
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--grey-50); color: var(--grey-800); min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ── HEADER ── */
+header { background: var(--navy); color: white; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.logo-icon { width: 32px; height: 32px; background: var(--teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+.logo-text { font-family: 'DM Serif Display', serif; font-size: 19px; color: white; }
+.logo-text span { color: var(--teal); }
+.header-nav { display: flex; align-items: center; gap: 8px; }
+.nav-link { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: background 0.15s, color 0.15s; }
+.nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-link.active { color: var(--teal); }
+.btn-list { background: var(--accent); color: var(--navy); border: none; padding: 7px 14px; border-radius: 8px; font-family: 'DM Sans',sans-serif; font-weight: 600; font-size: 12px; cursor: pointer; text-decoration: none; display: inline-block; }
+
+/* ── BREADCRUMB ── */
+.breadcrumb-bar { background: white; border-bottom: 1px solid var(--grey-200); padding: 10px 20px; }
+.breadcrumb { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--grey-500); }
+.breadcrumb a { color: var(--grey-500); text-decoration: none; }
+.breadcrumb a:hover { color: var(--teal-dark); text-decoration: underline; }
+.breadcrumb .sep { color: var(--grey-300); }
+.breadcrumb .current { color: var(--grey-700); font-weight: 500; }
+
+/* ── HERO ── */
+.hero { background: linear-gradient(135deg, var(--navy) 0%, #253561 100%); color: white; padding: 40px 20px; text-align: center; }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: 32px; margin-bottom: 10px; }
+.hero p { font-size: 15px; opacity: 0.8; max-width: 560px; margin: 0 auto 20px; }
+.hero-disclaimer { font-size: 12px; opacity: 0.6; max-width: 560px; margin: 0 auto; padding: 10px; background: rgba(255,255,255,0.08); border-radius: 8px; }
+.hero-disclaimer a { color: var(--teal); }
+
+/* ── MAIN ── */
+main { flex: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 24px 20px 40px; }
+
+/* ── SEARCH & FILTERS ── */
+.search-controls { background: white; border-radius: var(--radius); box-shadow: var(--shadow-md); padding: 20px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 14px; }
+.search-row { display: flex; gap: 10px; }
+.price-search-wrap { position: relative; flex: 1; }
+.price-search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--grey-400); pointer-events: none; }
+.price-search-input { width: 100%; padding: 10px 12px 10px 38px; border: 1.5px solid var(--grey-200); border-radius: 8px; font-family: 'DM Sans',sans-serif; font-size: 14px; color: var(--grey-800); outline: none; transition: border-color 0.2s; }
+.price-search-input:focus { border-color: var(--teal); }
+.filter-row-price { display: flex; gap: 10px; flex-wrap: wrap; }
+.price-select { padding: 9px 12px; border: 1.5px solid var(--grey-200); border-radius: 8px; font-family: 'DM Sans',sans-serif; font-size: 13px; color: var(--grey-700); outline: none; background: white; cursor: pointer; flex: 1; min-width: 150px; transition: border-color 0.2s; }
+.price-select:focus { border-color: var(--teal); }
+.results-info { font-size: 13px; color: var(--grey-500); display: flex; align-items: center; gap: 8px; }
+.results-info strong { color: var(--navy); }
+
+/* ── TABLE ── */
+.table-wrap { background: white; border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; }
+.price-table { width: 100%; border-collapse: collapse; }
+.price-table th { background: var(--navy); color: white; text-align: left; padding: 12px 16px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+.price-table td { padding: 11px 16px; font-size: 13px; color: var(--grey-700); border-bottom: 1px solid var(--grey-100); vertical-align: top; }
+.price-table tr:last-child td { border-bottom: none; }
+.price-table tr:hover td { background: var(--grey-50); }
+.item-num { font-family: monospace; font-size: 11px; color: var(--grey-400); background: var(--grey-100); padding: 2px 6px; border-radius: 4px; display: inline-block; }
+.item-name { font-weight: 500; color: var(--navy); }
+.item-cat { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-top: 3px; }
+.price-col { font-weight: 600; color: var(--teal-dark); white-space: nowrap; }
+.price-col-remote { color: var(--grey-500); }
+.unit-badge { font-size: 11px; color: var(--grey-400); background: var(--grey-100); padding: 2px 7px; border-radius: 10px; white-space: nowrap; }
+.no-results { padding: 48px 24px; text-align: center; font-size: 14px; color: var(--grey-400); }
+
+/* Pagination */
+.pagination { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px; }
+.page-btn { padding: 7px 14px; border-radius: 8px; font-family: 'DM Sans',sans-serif; font-size: 13px; font-weight: 600; border: 1.5px solid var(--grey-200); background: white; color: var(--grey-600); cursor: pointer; transition: all 0.15s; }
+.page-btn:hover { border-color: var(--teal); color: var(--teal); }
+.page-btn.active { background: var(--navy); border-color: var(--navy); color: white; }
+.page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.page-info { font-size: 13px; color: var(--grey-400); }
+
+/* Callout */
+.price-note { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 14px 18px; margin-top: 20px; font-size: 13px; color: #92400e; }
+.price-note a { color: var(--teal-dark); font-weight: 600; }
+
+/* Category color dots */
+.cat-01 { background: #dbeafe; color: #1e40af; }
+.cat-02 { background: #d1fae5; color: #065f46; }
+.cat-03 { background: #ede9fe; color: #5b21b6; }
+.cat-04 { background: #fee2e2; color: #991b1b; }
+.cat-05 { background: #fef9c3; color: #854d0e; }
+.cat-06 { background: #e0f2fe; color: #0369a1; }
+.cat-07 { background: #fce7f3; color: #9d174d; }
+.cat-08 { background: #ecfccb; color: #3f6212; }
+.cat-09 { background: #fff7ed; color: #c2410c; }
+.cat-15 { background: #f0fdf4; color: #166534; }
+
+footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 24px 20px; text-align: center; font-size: 12px; }
+footer a { color: var(--teal); text-decoration: none; }
+
+@media (max-width: 680px) {
+  .hero h1 { font-size: 22px; }
+  .search-row { flex-direction: column; }
+  .price-table th:nth-child(4), .price-table td:nth-child(4),
+  .price-table th:nth-child(5), .price-table td:nth-child(5) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">
+    <div class="logo-icon">🏥</div>
+    <span class="logo-text">NDIS<span>mart</span></span>
+  </a>
+  <nav class="header-nav">
+    <a class="nav-link" href="/">Directory</a>
+    <a class="nav-link active" href="/ndis-prices.html">Price Guide</a>
+    <a class="nav-link btn-list" href="/provider.html">List Your Practice</a>
+  </nav>
+</header>
+
+<div class="breadcrumb-bar">
+  <nav class="breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <span class="current">NDIS Price Guide 2024–25</span>
+  </nav>
+</div>
+
+<div class="hero">
+  <h1>💰 NDIS Price Guide 2024–25</h1>
+  <p>Search the official NDIS Pricing Arrangements. Look up support item prices by name, item number, or support category.</p>
+  <div class="hero-disclaimer">
+    Prices shown are from the NDIS Pricing Arrangements and Price Limits 2024–25.
+    Always confirm current rates with your provider.
+    <a href="https://www.ndis.gov.au/providers/pricing-arrangements" target="_blank" rel="noopener">View official NDIS pricing →</a>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+
+    <div class="search-controls">
+      <div class="search-row">
+        <div class="price-search-wrap">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="price-search-input" id="priceSearch" type="text" placeholder="Search by support item name or number…" oninput="filterPrices()">
+        </div>
+      </div>
+      <div class="filter-row-price">
+        <select class="price-select" id="catFilter" onchange="filterPrices()">
+          <option value="">All support categories</option>
+          <option value="01">01 — Daily Activities</option>
+          <option value="02">02 — Home Modifications</option>
+          <option value="03">03 — Consumables</option>
+          <option value="04">04 — Assistance with Social/Community Participation</option>
+          <option value="05">05 — Assistive Technology</option>
+          <option value="06">06 — Support Coordination</option>
+          <option value="07">07 — Improved Living Arrangements</option>
+          <option value="08">08 — Increased Social/Community Participation</option>
+          <option value="09">09 — Finding and Keeping a Job</option>
+          <option value="10">10 — Improved Learning</option>
+          <option value="11">11 — Improved Health and Wellbeing</option>
+          <option value="12">12 — Improved Life Choices</option>
+          <option value="13">13 — Improved Daily Living</option>
+          <option value="14">14 — Improved Relationships</option>
+          <option value="15">15 — Specialist Disability Accommodation</option>
+        </select>
+        <select class="price-select" id="unitFilter" onchange="filterPrices()">
+          <option value="">All units</option>
+          <option value="H">Per Hour (H)</option>
+          <option value="EA">Each (EA)</option>
+          <option value="D">Per Day (D)</option>
+          <option value="WK">Per Week (WK)</option>
+          <option value="MON">Per Month (MON)</option>
+        </select>
+      </div>
+      <div class="results-info">
+        <strong id="priceCount">0</strong> items shown
+        <span style="color:var(--grey-300)">|</span>
+        <a href="https://www.ndis.gov.au/providers/pricing-arrangements" target="_blank" rel="noopener" style="color:var(--teal-dark);font-weight:600;text-decoration:none;font-size:13px">📄 Download official PDF →</a>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Item Number</th>
+            <th>Support Item</th>
+            <th>Unit</th>
+            <th>National<br>Price Limit</th>
+            <th>Remote</th>
+            <th>Very Remote</th>
+          </tr>
+        </thead>
+        <tbody id="priceTableBody">
+          <tr><td colspan="6" class="no-results">Loading…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination" id="paginationBar"></div>
+
+    <div class="price-note">
+      ⚠️ <strong>Disclaimer:</strong> Prices shown are indicative rates from the NDIS Pricing Arrangements 2024–25.
+      Providers may charge up to but not above these limits for NDIS-funded supports.
+      Prices are updated annually — always verify with your provider or the
+      <a href="https://www.ndis.gov.au/providers/pricing-arrangements" target="_blank" rel="noopener">official NDIS pricing page</a>.
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 NDISmart — Australia's NDIS Provider Directory &nbsp;|&nbsp;
+  <a href="/">Browse Providers</a> &nbsp;|&nbsp;
+  <a href="/ndis-prices.html">Price Guide</a> &nbsp;|&nbsp;
+  <a href="/provider.html">List Your Practice</a></p>
+</footer>
+
+<script>
+// ─── PRICE DATA ───────────────────────────────────────────────────────────────
+// Snapshot of NDIS Pricing Arrangements 2024-25 key items.
+// Source: NDIS Pricing Arrangements and Price Limits 2024-25
+// Full catalogue: ndis.gov.au/providers/pricing-arrangements
+const PRICE_DATA = [
+  // Cat 01 – Daily Activities
+  {num:"01_011_0107_1_1",name:"Assistance With Self-Care Activities - Standard - Weekday Daytime",cat:"01",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+  {num:"01_011_0107_1_1",name:"Assistance With Self-Care Activities - Standard - Weekday Evening",cat:"01",unit:"H",nat:74.32,remote:104.05,vremote:111.48},
+  {num:"01_011_0107_1_1",name:"Assistance With Self-Care Activities - Standard - Saturday",cat:"01",unit:"H",nat:94.77,remote:132.68,vremote:142.16},
+  {num:"01_011_0107_1_1",name:"Assistance With Self-Care Activities - Standard - Sunday",cat:"01",unit:"H",nat:121.99,remote:170.79,vremote:182.99},
+  {num:"01_011_0107_1_1",name:"Assistance With Self-Care Activities - Standard - Public Holiday",cat:"01",unit:"H",nat:149.21,remote:208.89,vremote:223.82},
+  {num:"01_002_0107_1_1",name:"Assistance With Self-Care Activities - High Intensity - Weekday Daytime",cat:"01",unit:"H",nat:75.02,remote:105.03,vremote:112.53},
+  {num:"01_002_0107_1_1",name:"Assistance With Self-Care Activities - High Intensity - Saturday",cat:"01",unit:"H",nat:105.22,remote:147.31,vremote:157.83},
+  {num:"01_002_0107_1_1",name:"Assistance With Self-Care Activities - High Intensity - Sunday",cat:"01",unit:"H",nat:135.42,remote:189.59,vremote:203.13},
+  {num:"01_013_0107_1_1",name:"Assistance In A Shared Living Arrangement - Standard",cat:"01",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+  {num:"01_019_0107_1_1",name:"Community Nursing Care - Standard",cat:"01",unit:"H",nat:105.85,remote:148.19,vremote:158.78},
+  {num:"01_021_0107_1_1",name:"Assistance With Travel/Transport Arrangements",cat:"01",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+  {num:"01_022_0107_1_1",name:"Participate In Community, Social And Civic Activities - Standard",cat:"01",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+  {num:"01_060_0135_1_1",name:"Group And Centre Based Activities - 1:1 Standard",cat:"01",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+  {num:"01_060_0136_1_1",name:"Group And Centre Based Activities - 1:2 Standard",cat:"01",unit:"H",nat:39.15,remote:54.81,vremote:58.73},
+  {num:"01_060_0137_1_1",name:"Group And Centre Based Activities - 1:3 Standard",cat:"01",unit:"H",nat:27.60,remote:38.64,vremote:41.40},
+  {num:"01_060_0138_1_1",name:"Group And Centre Based Activities - 1:4 Standard",cat:"01",unit:"H",nat:21.49,remote:30.09,vremote:32.24},
+  {num:"01_051_0107_1_1",name:"Development of Daily Living and Life Skills",cat:"01",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+  {num:"01_801_0107_1_1",name:"Innovative Community Participation",cat:"01",unit:"H",nat:71.18,remote:99.65,vremote:106.77},
+  {num:"01_302_0104_1_1",name:"Household Tasks",cat:"01",unit:"H",nat:59.81,remote:83.73,vremote:89.72},
+
+  // Cat 02 – Home Modifications
+  {num:"02_051_0102_1_1",name:"Home Modification Design and Construction - Standard",cat:"02",unit:"EA",nat:null,remote:null,vremote:null},
+  {num:"02_052_0102_1_1",name:"Home Modification - Specialist",cat:"02",unit:"EA",nat:null,remote:null,vremote:null},
+
+  // Cat 03 – Consumables
+  {num:"03_220000911_0103_1_1",name:"Personal Care/Safety Equipment",cat:"03",unit:"EA",nat:null,remote:null,vremote:null},
+
+  // Cat 04 – Assistance with Social/Community Participation
+  {num:"04_210_0125_6_1",name:"Access Community Social And Recreational Activities",cat:"04",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+
+  // Cat 05 – Assistive Technology
+  {num:"05_221500001_0105_1_1",name:"Assistive Products For Personal Care And Safety",cat:"05",unit:"EA",nat:null,remote:null,vremote:null},
+  {num:"05_222210111_0105_1_1",name:"Communication And Information Equipment",cat:"05",unit:"EA",nat:null,remote:null,vremote:null},
+  {num:"05_223100000_0105_1_1",name:"Personal Mobility Equipment",cat:"05",unit:"EA",nat:null,remote:null,vremote:null},
+  {num:"05_224500000_0105_1_1",name:"Assistive Products For Household Tasks",cat:"05",unit:"EA",nat:null,remote:null,vremote:null},
+  {num:"05_225000000_0105_1_1",name:"Assistive Equipment For Recreation",cat:"05",unit:"EA",nat:null,remote:null,vremote:null},
+  {num:"05_181_0108_1_1",name:"Assistive Technology Maintenance, Repair And Rental",cat:"05",unit:"H",nat:214.41,remote:300.17,vremote:321.62},
+  {num:"05_182_0105_1_1",name:"AT Design Support",cat:"05",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+
+  // Cat 06 – Support Coordination
+  {num:"06_001_0106_8_3",name:"Support Coordination",cat:"06",unit:"H",nat:100.14,remote:140.20,vremote:150.21},
+  {num:"06_002_0106_8_3",name:"Specialist Support Coordination",cat:"06",unit:"H",nat:190.54,remote:266.76,vremote:285.81},
+
+  // Cat 07 – Improved Living Arrangements
+  {num:"07_002_0131_6_1",name:"Accommodation / Tenancy Assistance",cat:"07",unit:"H",nat:100.14,remote:140.20,vremote:150.21},
+
+  // Cat 08 – Increased Social/Community Participation
+  {num:"08_001_0117_6_3",name:"Innovative Community Participation",cat:"08",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+  {num:"08_002_0117_6_3",name:"Skill Development And Training",cat:"08",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+
+  // Cat 09 – Finding and Keeping a Job
+  {num:"09_001_0102_6_3",name:"Finding And Keeping A Job",cat:"09",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+
+  // Cat 10 – Improved Learning
+  {num:"10_001_0102_6_3",name:"Transition To School",cat:"10",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+
+  // Cat 11 – Improved Health and Wellbeing
+  {num:"11_022_0117_1_3",name:"Exercise Physiology And Physical Wellbeing Activities",cat:"11",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+
+  // Cat 12 – Improved Life Choices
+  {num:"12_001_0106_1_3",name:"Plan Management",cat:"12",unit:"MON",nat:104.45,remote:104.45,vremote:104.45},
+  {num:"12_002_0106_1_3",name:"Financial Intermediary",cat:"12",unit:"H",nat:100.14,remote:140.20,vremote:150.21},
+  {num:"12_044_0106_1_3",name:"Plan Management Setup Fee",cat:"12",unit:"EA",nat:230.10,remote:230.10,vremote:230.10},
+
+  // Cat 13 – Improved Daily Living Skills
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Physiotherapy",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Occupational Therapy",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Speech Pathology",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Psychology",cat:"13",unit:"H",nat:214.41,remote:300.17,vremote:321.62},
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Social Work",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Dietetics",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Podiatry",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Counselling",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Music Therapy",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Art Therapy",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_009_0128_1_3",name:"Therapeutic Supports - Exercise Physiology",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_055_0133_1_3",name:"Daily Activities - Behaviour Support Practitioner",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_056_0133_1_3",name:"Specialist Behaviour Support",cat:"13",unit:"H",nat:214.41,remote:300.17,vremote:321.62},
+  {num:"13_053_0133_1_3",name:"Specialised Assessment By A Behaviour Support Practitioner",cat:"13",unit:"H",nat:214.41,remote:300.17,vremote:321.62},
+  {num:"13_091_0128_1_3",name:"Training For Carers/Parents",cat:"13",unit:"H",nat:193.99,remote:271.59,vremote:290.99},
+  {num:"13_092_0128_1_3",name:"Specialist Positive Behaviour Support Report Writing",cat:"13",unit:"H",nat:214.41,remote:300.17,vremote:321.62},
+
+  // Cat 14 – Improved Relationships
+  {num:"14_012_0128_1_3",name:"Individual Social Skills Development",cat:"14",unit:"H",nat:67.56,remote:94.58,vremote:101.34},
+
+  // Cat 15 – Specialist Disability Accommodation
+  {num:"15_600_0115_1_1",name:"SDA – Improved Liveability",cat:"15",unit:"WK",nat:null,remote:null,vremote:null},
+  {num:"15_601_0115_1_1",name:"SDA – Fully Accessible",cat:"15",unit:"WK",nat:null,remote:null,vremote:null},
+  {num:"15_602_0115_1_1",name:"SDA – Robust",cat:"15",unit:"WK",nat:null,remote:null,vremote:null},
+  {num:"15_603_0115_1_1",name:"SDA – High Physical Support",cat:"15",unit:"WK",nat:null,remote:null,vremote:null},
+];
+
+const CAT_NAMES = {
+  "01":"Daily Activities","02":"Home Modifications","03":"Consumables",
+  "04":"Social/Community","05":"Assistive Technology","06":"Support Coordination",
+  "07":"Living Arrangements","08":"Social Participation","09":"Employment",
+  "10":"Learning","11":"Health & Wellbeing","12":"Life Choices",
+  "13":"Daily Living Skills","14":"Relationships","15":"SDA",
+};
+
+const PAGE_SIZE = 30;
+let currentPage = 0;
+let filteredData = [...PRICE_DATA];
+
+function formatPrice(v) {
+  if (v === null || v === undefined) return '<span style="color:var(--grey-300)">—</span>';
+  return `$${v.toFixed(2)}`;
+}
+
+function catClass(cat) { return 'item-cat cat-' + (cat || '01').padStart(2,'0'); }
+
+function renderRow(item) {
+  const catName = CAT_NAMES[item.cat] || 'Cat ' + item.cat;
+  return `<tr>
+    <td><span class="item-num">${item.num}</span></td>
+    <td>
+      <div class="item-name">${item.name}</div>
+      <span class="${catClass(item.cat)}">${catName}</span>
+    </td>
+    <td><span class="unit-badge">${item.unit}</span></td>
+    <td class="price-col">${formatPrice(item.nat)}</td>
+    <td class="price-col price-col-remote">${formatPrice(item.remote)}</td>
+    <td class="price-col price-col-remote">${formatPrice(item.vremote)}</td>
+  </tr>`;
+}
+
+function renderTable() {
+  const body = document.getElementById('priceTableBody');
+  const start = currentPage * PAGE_SIZE;
+  const page = filteredData.slice(start, start + PAGE_SIZE);
+  document.getElementById('priceCount').textContent = filteredData.length.toLocaleString();
+
+  if (!filteredData.length) {
+    body.innerHTML = '<tr><td colspan="6" class="no-results">No items match your search. Try a different keyword.</td></tr>';
+  } else {
+    body.innerHTML = page.map(renderRow).join('');
+  }
+  renderPagination();
+}
+
+function renderPagination() {
+  const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
+  const bar = document.getElementById('paginationBar');
+  if (totalPages <= 1) { bar.innerHTML = ''; return; }
+
+  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===0?'disabled':''}>← Prev</button>`;
+  for (let i = 0; i < totalPages; i++) {
+    if (Math.abs(i - currentPage) > 2 && i !== 0 && i !== totalPages-1) {
+      if (i === 1 || i === totalPages-2) html += '<span class="page-info">…</span>';
+      continue;
+    }
+    html += `<button class="page-btn${i===currentPage?' active':''}" onclick="goPage(${i})">${i+1}</button>`;
+  }
+  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===totalPages-1?'disabled':''}>Next →</button>`;
+  bar.innerHTML = html;
+}
+
+function goPage(n) {
+  const totalPages = Math.ceil(filteredData.length / PAGE_SIZE);
+  currentPage = Math.max(0, Math.min(totalPages-1, n));
+  renderTable();
+  document.querySelector('.table-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function filterPrices() {
+  const q = document.getElementById('priceSearch').value.toLowerCase().trim();
+  const cat = document.getElementById('catFilter').value;
+  const unit = document.getElementById('unitFilter').value;
+
+  filteredData = PRICE_DATA.filter(item => {
+    const matchQ = !q || item.name.toLowerCase().includes(q) || item.num.toLowerCase().includes(q);
+    const matchCat = !cat || item.cat === cat;
+    const matchUnit = !unit || item.unit === unit;
+    return matchQ && matchCat && matchUnit;
+  });
+
+  currentPage = 0;
+  renderTable();
+}
+
+// Init
+filterPrices();
+</script>
+</body>
+</html>

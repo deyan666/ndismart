@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NDIS Provider | NDISmart</title>
+<meta name="description" content="Find NDIS registered providers near you on NDISmart — Australia's national NDIS provider directory.">
+<link rel="canonical" href="https://ndismart.netlify.app/providers/">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NDISmart">
+<meta property="og:title" content="NDIS Provider | NDISmart">
+<meta property="og:description" content="Find NDIS registered providers near you on NDISmart.">
+<meta property="og:image" content="https://ndismart.netlify.app/og-default.png">
+<meta property="og:url" content="https://ndismart.netlify.app/providers/">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NDIS Provider | NDISmart">
+<meta name="twitter:description" content="Find NDIS registered providers near you on NDISmart.">
+<!-- Preload fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2744;
+  --teal: #4fc3a1;
+  --teal-dark: #3aab8a;
+  --teal-light: #e1f5ee;
+  --white: #ffffff;
+  --grey-50: #f8fafc;
+  --grey-100: #f1f5f9;
+  --grey-200: #e2e8f0;
+  --grey-300: #cbd5e1;
+  --grey-400: #94a3b8;
+  --grey-500: #64748b;
+  --grey-600: #475569;
+  --grey-700: #334155;
+  --grey-800: #1e293b;
+  --accent: #f59e0b;
+  --green: #22c55e;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--grey-50);
+  color: var(--grey-800);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--navy);
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.logo-icon {
+  width: 32px; height: 32px;
+  background: var(--teal);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.logo-text { font-family: 'DM Serif Display', serif; font-size: 19px; color: white; }
+.logo-text span { color: var(--teal); }
+.header-nav { display: flex; align-items: center; gap: 8px; }
+.nav-link {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-link:hover { background: rgba(255,255,255,0.1); color: white; }
+.nav-link.active { color: var(--teal); }
+.btn-list-provider {
+  background: var(--accent); color: var(--navy); border: none;
+  padding: 7px 14px; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 12px;
+  cursor: pointer; text-decoration: none; display: inline-block;
+}
+
+/* ── BREADCRUMB ── */
+.breadcrumb-bar {
+  background: white;
+  border-bottom: 1px solid var(--grey-200);
+  padding: 10px 20px;
+}
+.breadcrumb {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--grey-500);
+  flex-wrap: wrap;
+}
+.breadcrumb a { color: var(--grey-500); text-decoration: none; }
+.breadcrumb a:hover { color: var(--teal-dark); text-decoration: underline; }
+.breadcrumb .sep { color: var(--grey-300); }
+.breadcrumb .current { color: var(--grey-700); font-weight: 500; }
+
+/* ── MAIN CONTENT ── */
+main { flex: 1; }
+.container { max-width: 900px; margin: 0 auto; padding: 24px 20px 40px; }
+
+/* Back link */
+.back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--grey-500); font-size: 13px; text-decoration: none;
+  margin-bottom: 20px;
+  transition: color 0.15s;
+}
+.back-link:hover { color: var(--navy); }
+.back-link svg { flex-shrink: 0; }
+
+/* Provider card hero */
+.provider-hero {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 28px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.hero-avatar {
+  width: 72px; height: 72px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; font-weight: 700; color: white;
+  flex-shrink: 0;
+}
+.hero-content { flex: 1; min-width: 0; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+}
+.badge-registered { background: #dcfce7; color: #15803d; }
+.badge-featured   { background: #fef3c7; color: #92400e; }
+.badge-verified   { background: #dbeafe; color: #1e40af; }
+.badge-accepting  { background: #d1fae5; color: #065f46; }
+.hero-name {
+  font-size: 24px; font-weight: 700; color: var(--navy);
+  line-height: 1.2; margin-bottom: 6px;
+}
+.hero-location {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 14px; color: var(--grey-500);
+  margin-bottom: 16px;
+}
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-action {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 20px; border-radius: 10px;
+  font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.btn-action:active { transform: scale(0.97); }
+.btn-primary-action { background: var(--teal); color: white; }
+.btn-primary-action:hover { background: var(--teal-dark); }
+.btn-secondary-action { background: var(--navy); color: white; }
+.btn-secondary-action:hover { opacity: 0.85; }
+.btn-outline-action { background: white; color: var(--navy); border: 1.5px solid var(--grey-200); }
+.btn-outline-action:hover { border-color: var(--teal); color: var(--teal-dark); }
+
+/* Info grid (two-column on desktop) */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+@media (max-width: 680px) { .info-grid { grid-template-columns: 1fr; } }
+
+/* Info card */
+.info-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 22px;
+}
+.info-card-title {
+  font-size: 13px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--grey-400);
+  margin-bottom: 14px;
+}
+.detail-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--grey-700);
+  padding: 6px 0;
+  border-bottom: 1px solid var(--grey-100);
+}
+.detail-row:last-child { border-bottom: none; }
+.detail-row a { color: var(--teal-dark); text-decoration: none; word-break: break-word; }
+.detail-row a:hover { text-decoration: underline; }
+.detail-icon { font-size: 15px; flex-shrink: 0; width: 20px; text-align: center; margin-top: 1px; }
+
+/* Services */
+.services-section {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 22px;
+  margin-bottom: 20px;
+}
+.services-title {
+  font-size: 13px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--grey-400);
+  margin-bottom: 14px;
+}
+.services-grid {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.service-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--teal-light); color: #2a7d5e;
+  font-size: 13px; font-weight: 500;
+  padding: 6px 14px; border-radius: 20px;
+  border: 1px solid #9dd4bc;
+}
+
+/* Hours */
+.hours-grid { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; font-size: 13px; color: var(--grey-700); }
+.hours-day { font-weight: 500; color: var(--grey-500); }
+
+/* Similar providers */
+.similar-section { margin-top: 32px; }
+.similar-title {
+  font-size: 18px; font-weight: 700; color: var(--navy);
+  margin-bottom: 16px;
+}
+.similar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 700px) { .similar-grid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) and (min-width: 701px) { .similar-grid { grid-template-columns: 1fr 1fr; } }
+
+.similar-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: box-shadow 0.2s, transform 0.1s;
+  border: 2px solid transparent;
+}
+.similar-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-color: var(--teal); }
+.sim-avatar {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; color: white;
+  margin-bottom: 10px;
+}
+.sim-name { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 4px; line-height: 1.3; }
+.sim-suburb { font-size: 12px; color: var(--grey-500); margin-bottom: 8px; }
+.sim-service { font-size: 11px; background: var(--teal-light); color: #2a7d5e; padding: 3px 9px; border-radius: 12px; display: inline-block; }
+
+/* Price guide callout */
+.price-callout {
+  background: linear-gradient(135deg, var(--navy) 0%, #2d3f6f 100%);
+  color: white;
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.price-callout-icon { font-size: 28px; flex-shrink: 0; }
+.price-callout h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.price-callout p { font-size: 13px; opacity: 0.8; }
+.price-callout a { color: var(--teal); text-decoration: none; font-weight: 600; }
+.price-callout a:hover { text-decoration: underline; }
+
+/* Loading / error states */
+.state-center { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px; text-align: center; }
+.state-icon { font-size: 48px; margin-bottom: 16px; }
+.state-title { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.state-text { font-size: 14px; color: var(--grey-500); max-width: 340px; }
+.spinner {
+  width: 40px; height: 40px;
+  border: 3px solid var(--grey-200);
+  border-top-color: var(--teal);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-bottom: 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Footer */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.6);
+  padding: 24px 20px;
+  text-align: center;
+  font-size: 12px;
+}
+footer a { color: var(--teal); text-decoration: none; }
+
+/* Review teaser */
+.review-teaser {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 22px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.review-stars { font-size: 22px; letter-spacing: 2px; color: var(--accent); }
+.review-teaser-text { flex: 1; min-width: 200px; }
+.review-teaser-text h3 { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+.review-teaser-text p { font-size: 13px; color: var(--grey-500); }
+.btn-leave-review {
+  background: var(--teal); color: white; border: none;
+  padding: 9px 20px; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 13px;
+  cursor: pointer; white-space: nowrap;
+}
+.btn-leave-review:hover { background: var(--teal-dark); }
+
+/* Review modal */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: var(--shadow-lg);
+}
+.modal-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+.form-group { margin-bottom: 16px; }
+.form-label { display: block; font-size: 13px; font-weight: 600; color: var(--grey-600); margin-bottom: 6px; }
+.form-input {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1.5px solid var(--grey-200);
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--grey-800);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form-input:focus { border-color: var(--teal); }
+.star-picker { display: flex; gap: 6px; }
+.star-btn {
+  font-size: 28px;
+  background: none; border: none; cursor: pointer;
+  color: var(--grey-300);
+  transition: color 0.1s, transform 0.1s;
+  padding: 0;
+}
+.star-btn.active, .star-btn:hover { color: var(--accent); transform: scale(1.15); }
+.checkbox-row { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--grey-600); }
+.checkbox-row input { margin-top: 3px; flex-shrink: 0; }
+.modal-footer { display: flex; gap: 10px; margin-top: 20px; justify-content: flex-end; }
+.btn-cancel { background: var(--grey-100); color: var(--grey-600); border: none; padding: 9px 20px; border-radius: 8px; font-family: 'DM Sans',sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+.btn-submit { background: var(--teal); color: white; border: none; padding: 9px 20px; border-radius: 8px; font-family: 'DM Sans',sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+.btn-submit:hover { background: var(--teal-dark); }
+
+/* Reviews list */
+.reviews-list { margin-top: 12px; }
+.review-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--grey-100);
+}
+.review-item:last-child { border-bottom: none; }
+.review-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+.review-author { font-size: 13px; font-weight: 600; color: var(--navy); }
+.review-date { font-size: 11px; color: var(--grey-400); margin-left: auto; }
+.review-stars-sm { color: var(--accent); font-size: 13px; }
+.review-text { font-size: 13px; color: var(--grey-600); line-height: 1.5; }
+
+@media (max-width: 600px) {
+  .provider-hero { flex-direction: column; }
+  .hero-avatar { width: 56px; height: 56px; font-size: 20px; }
+  .hero-name { font-size: 20px; }
+  .hero-actions .btn-action { flex: 1; justify-content: center; font-size: 13px; }
+  .container { padding: 16px 14px 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <a class="logo" href="/">
+    <div class="logo-icon">🏥</div>
+    <span class="logo-text">NDIS<span>mart</span></span>
+  </a>
+  <nav class="header-nav">
+    <a class="nav-link" href="/">Directory</a>
+    <a class="nav-link" href="/ndis-prices.html">Price Guide</a>
+    <a class="nav-link active btn-list-provider" href="/provider.html">List Your Practice</a>
+  </nav>
+</header>
+
+<!-- ── BREADCRUMB ── -->
+<div class="breadcrumb-bar">
+  <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <span class="current" id="bc-current">Loading…</span>
+  </nav>
+</div>
+
+<!-- ── MAIN ── -->
+<main>
+  <div class="container">
+    <a href="/" class="back-link" id="backLink">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Back to Directory
+    </a>
+
+    <div id="profileContent">
+      <div class="state-center">
+        <div class="spinner"></div>
+        <div class="state-title">Loading provider…</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ── REVIEW MODAL ── -->
+<div class="modal-overlay" id="reviewModal" onclick="if(event.target===this)closeReviewModal()">
+  <div class="modal-box">
+    <div class="modal-title">⭐ Leave a Review</div>
+
+    <div class="form-group">
+      <label class="form-label">Your Rating</label>
+      <div class="star-picker" id="starPicker">
+        <button class="star-btn" data-v="1" onclick="setRating(1)">★</button>
+        <button class="star-btn" data-v="2" onclick="setRating(2)">★</button>
+        <button class="star-btn" data-v="3" onclick="setRating(3)">★</button>
+        <button class="star-btn" data-v="4" onclick="setRating(4)">★</button>
+        <button class="star-btn" data-v="5" onclick="setRating(5)">★</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Your Name</label>
+      <input class="form-input" id="reviewName" placeholder="First name + initial (e.g. Sarah M.)">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Your Suburb</label>
+      <input class="form-input" id="reviewSuburb" placeholder="e.g. Parramatta">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Your Review <span style="color:var(--grey-400);font-weight:400">(min 20 characters)</span></label>
+      <textarea class="form-input" id="reviewText" rows="4" placeholder="Share your experience with this provider…" style="resize:vertical"></textarea>
+    </div>
+    <div class="form-group">
+      <label class="checkbox-row">
+        <input type="checkbox" id="reviewConsent">
+        I am a genuine NDIS participant or carer and this review reflects my real experience.
+      </label>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeReviewModal()">Cancel</button>
+      <button class="btn-submit" onclick="submitReview()">Submit Review</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2025 NDISmart — Australia's NDIS Provider Directory &nbsp;|&nbsp;
+  <a href="/">Browse Providers</a> &nbsp;|&nbsp;
+  <a href="/ndis-prices.html">Price Guide</a> &nbsp;|&nbsp;
+  <a href="/provider.html">List Your Practice</a></p>
+  <p style="margin-top:6px">Provider information is sourced from the NDIS Commission register. Always verify details directly with the provider.</p>
+</footer>
+
+<script>
+// ─── HELPERS ──────────────────────────────────────────────────────────────────
+function slugify(s) {
+  return (s || '').toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, ' ')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function makeSlug(p) {
+  const s = slugify(p.suburb || 'au');
+  const v = slugify((p.services && p.services[0] ? p.services[0] : 'ndis').substring(0, 40));
+  const n = slugify(p.name);
+  return `${s}-${v}-${n}`.replace(/-{2,}/g, '-').substring(0, 100);
+}
+
+function initials(name) {
+  return (name || '?').split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+}
+
+const AVATAR_COLORS = ['#1a2744','#0a7ea4','#7c3aed','#059669','#d97706','#dc2626','#0891b2','#2563eb'];
+function avatarColor(name) { return AVATAR_COLORS[(name || '').charCodeAt(0) % AVATAR_COLORS.length]; }
+
+function escHtml(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function fmtHours(hours) {
+  if (!hours) return '';
+  const days = hours.split(',').map(d => d.trim()).filter(Boolean);
+  return days.map(d => {
+    const parts = d.split(':');
+    const day = parts.shift().trim();
+    const time = parts.join(':').trim();
+    return `<div class="hours-day">${day}</div><div>${time || 'Closed'}</div>`;
+  }).join('');
+}
+
+function websiteUrl(w) {
+  if (!w) return null;
+  return w.startsWith('http') ? w : 'https://' + w;
+}
+
+// ─── SEO META INJECTION ────────────────────────────────────────────────────────
+function setMeta(name, content) {
+  let el = document.querySelector(`meta[name="${name}"]`);
+  if (!el) { el = document.createElement('meta'); el.name = name; document.head.appendChild(el); }
+  el.content = content;
+}
+function setOG(prop, content) {
+  let el = document.querySelector(`meta[property="${prop}"]`);
+  if (!el) { el = document.createElement('meta'); el.setAttribute('property', prop); document.head.appendChild(el); }
+  el.content = content;
+}
+function setCanonical(url) {
+  let el = document.querySelector('link[rel="canonical"]');
+  if (!el) { el = document.createElement('link'); el.rel = 'canonical'; document.head.appendChild(el); }
+  el.href = url;
+}
+
+function injectJsonLd(p, slug) {
+  const existing = document.getElementById('json-ld-provider');
+  if (existing) existing.remove();
+
+  const website = websiteUrl(p.website);
+  const canonicalUrl = `${window.location.origin}/providers/${slug}`;
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: p.name,
+    description: buildDescription(p),
+    url: website || canonicalUrl,
+    telephone: p.phone || undefined,
+    email: p.email || undefined,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: p.suburb || undefined,
+      addressRegion: p.state || undefined,
+      postalCode: p.postcode || undefined,
+      addressCountry: 'AU',
+    },
+    areaServed: { '@type': 'State', name: p.state || 'Australia' },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'NDIS Support Services',
+      itemListElement: (p.services || []).map(s => ({
+        '@type': 'Offer',
+        name: s,
+      })),
+    },
+    knowsAbout: ['NDIS', 'National Disability Insurance Scheme', ...(p.services || [])],
+  };
+
+  const script = document.createElement('script');
+  script.id = 'json-ld-provider';
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+function injectBreadcrumbJsonLd(p, slug) {
+  const existing = document.getElementById('json-ld-breadcrumb');
+  if (existing) existing.remove();
+
+  const primaryService = p.services && p.services[0] ? p.services[0] : 'NDIS Services';
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: window.location.origin + '/' },
+      { '@type': 'ListItem', position: 2, name: primaryService, item: `${window.location.origin}/?service=${encodeURIComponent(primaryService)}` },
+      { '@type': 'ListItem', position: 3, name: p.suburb || p.state || 'Australia', item: `${window.location.origin}/?q=${encodeURIComponent(p.suburb || p.state || '')}` },
+      { '@type': 'ListItem', position: 4, name: p.name, item: `${window.location.origin}/providers/${slug}` },
+    ],
+  };
+
+  const script = document.createElement('script');
+  script.id = 'json-ld-breadcrumb';
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+function buildDescription(p) {
+  const svc = p.services && p.services.length ? p.services.slice(0, 3).join(', ') : 'NDIS services';
+  const loc = [p.suburb, p.state].filter(Boolean).join(', ') || 'Australia';
+  return `${p.name} is a registered NDIS provider in ${loc} offering ${svc}. View contact details, services and reviews on NDISmart.`;
+}
+
+function updatePageMeta(p, slug) {
+  const primaryService = p.services && p.services[0] ? p.services[0] : 'NDIS Services';
+  const loc = [p.suburb, p.state].filter(Boolean).join(', ') || 'Australia';
+  const title = `${p.name} — NDIS ${primaryService} in ${p.suburb || p.state || 'Australia'} | NDISmart`;
+  const desc = buildDescription(p);
+  const canonicalUrl = `${window.location.origin}/providers/${slug}`;
+
+  document.title = title;
+  setMeta('description', desc);
+  setOG('og:title', title);
+  setOG('og:description', desc);
+  setOG('og:url', canonicalUrl);
+  setOG('og:type', 'business.business');
+  setMeta('twitter:title', title);
+  setMeta('twitter:description', desc);
+  setCanonical(canonicalUrl);
+
+  injectJsonLd(p, slug);
+  injectBreadcrumbJsonLd(p, slug);
+}
+
+// ─── BREADCRUMB ────────────────────────────────────────────────────────────────
+function renderBreadcrumb(p) {
+  const primaryService = p.services && p.services[0] ? p.services[0] : 'NDIS Services';
+  const suburb = p.suburb || p.state || 'Australia';
+  const svcUrl = `/?service=${encodeURIComponent(primaryService)}`;
+  const subUrl = `/?q=${encodeURIComponent(suburb)}`;
+  document.getElementById('breadcrumb').innerHTML = `
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <a href="${svcUrl}">${escHtml(primaryService)}</a>
+    <span class="sep">›</span>
+    <a href="${subUrl}">${escHtml(suburb)}</a>
+    <span class="sep">›</span>
+    <span class="current">${escHtml(p.name)}</span>
+  `;
+}
+
+// ─── REVIEWS ──────────────────────────────────────────────────────────────────
+let currentProviderSlug = '';
+let currentRating = 0;
+
+function getReviews(slug) {
+  try {
+    return JSON.parse(localStorage.getItem('reviews_' + slug) || '[]');
+  } catch(e) { return []; }
+}
+function saveReview(slug, review) {
+  const reviews = getReviews(slug);
+  reviews.unshift(review);
+  localStorage.setItem('reviews_' + slug, JSON.stringify(reviews));
+}
+function avgRating(reviews) {
+  if (!reviews.length) return 0;
+  return reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
+}
+
+function setRating(n) {
+  currentRating = n;
+  document.querySelectorAll('.star-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.v) <= n);
+  });
+}
+
+function openReviewModal() {
+  currentRating = 0;
+  document.getElementById('reviewName').value = '';
+  document.getElementById('reviewSuburb').value = '';
+  document.getElementById('reviewText').value = '';
+  document.getElementById('reviewConsent').checked = false;
+  document.querySelectorAll('.star-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('reviewModal').classList.add('open');
+}
+function closeReviewModal() {
+  document.getElementById('reviewModal').classList.remove('open');
+}
+
+function submitReview() {
+  if (!currentRating) { alert('Please select a star rating.'); return; }
+  const name = document.getElementById('reviewName').value.trim();
+  const suburb = document.getElementById('reviewSuburb').value.trim();
+  const text = document.getElementById('reviewText').value.trim();
+  const consent = document.getElementById('reviewConsent').checked;
+  if (!name) { alert('Please enter your name.'); return; }
+  if (text.length < 20) { alert('Please write at least 20 characters.'); return; }
+  if (!consent) { alert('Please confirm you are a genuine participant or carer.'); return; }
+
+  const review = { name, suburb, text, rating: currentRating, date: new Date().toLocaleDateString('en-AU', { year:'numeric', month:'short', day:'numeric' }) };
+  saveReview(currentProviderSlug, review);
+  closeReviewModal();
+  rerenderReviews();
+}
+
+function rerenderReviews() {
+  const reviews = getReviews(currentProviderSlug);
+  const avg = avgRating(reviews);
+  const stars = avg > 0 ? '★'.repeat(Math.round(avg)) + '☆'.repeat(5 - Math.round(avg)) : '☆☆☆☆☆';
+  const el = document.getElementById('reviewsSection');
+  if (!el) return;
+  el.innerHTML = renderReviewsHtml(reviews, avg, stars);
+}
+
+function renderReviewsHtml(reviews, avg, stars) {
+  const listHtml = reviews.slice(0, 5).map(r => `
+    <div class="review-item">
+      <div class="review-header">
+        <span class="review-author">${escHtml(r.name)}${r.suburb ? `, ${escHtml(r.suburb)}` : ''}</span>
+        <span class="review-stars-sm">${'★'.repeat(r.rating)}</span>
+        <span class="review-date">${escHtml(r.date)}</span>
+      </div>
+      <div class="review-text">${escHtml(r.text)}</div>
+    </div>
+  `).join('');
+
+  return `
+    <div class="review-teaser">
+      <div>
+        <div class="review-stars">${stars}</div>
+        ${avg > 0 ? `<div style="font-size:13px;color:var(--grey-500);margin-top:4px">${avg.toFixed(1)} / 5 — ${reviews.length} review${reviews.length !== 1 ? 's' : ''}</div>` : '<div style="font-size:13px;color:var(--grey-400)">No reviews yet</div>'}
+      </div>
+      <div class="review-teaser-text">
+        <h3>Have you used this provider?</h3>
+        <p>Help other NDIS participants make informed decisions.</p>
+      </div>
+      <button class="btn-leave-review" onclick="openReviewModal()">✏️ Leave a Review</button>
+    </div>
+    ${listHtml ? `<div class="reviews-list">${listHtml}</div>` : ''}
+  `;
+}
+
+// ─── SIMILAR PROVIDERS ────────────────────────────────────────────────────────
+function renderSimilar(allProviders, current, slug) {
+  const similar = allProviders.filter(p =>
+    makeSlug(p) !== slug &&
+    (p.suburb === current.suburb ||
+     (p.services && current.services && p.services.some(s => current.services.includes(s))))
+  ).slice(0, 3);
+
+  if (!similar.length) return '';
+
+  const cards = similar.map(p => {
+    const pSlug = makeSlug(p);
+    const col = avatarColor(p.name);
+    const ini = initials(p.name);
+    const svc = p.services && p.services[0] ? p.services[0] : '';
+    const sub = [p.suburb, p.state].filter(Boolean).join(', ');
+    return `
+      <a class="similar-card" href="/providers/${pSlug}">
+        <div class="sim-avatar" style="background:${col}">${ini}</div>
+        <div class="sim-name">${escHtml(p.name)}</div>
+        ${sub ? `<div class="sim-suburb">📍 ${escHtml(sub)}</div>` : ''}
+        ${svc ? `<span class="sim-service">${escHtml(svc.length > 35 ? svc.substring(0,35)+'…' : svc)}</span>` : ''}
+      </a>
+    `;
+  }).join('');
+
+  return `
+    <div class="similar-section">
+      <div class="similar-title">Similar providers near you</div>
+      <div class="similar-grid">${cards}</div>
+    </div>
+  `;
+}
+
+// ─── PROFILE RENDER ──────────────────────────────────────────────────────────
+function renderProfile(p, allProviders, slug) {
+  const col = avatarColor(p.name);
+  const ini = initials(p.name);
+  const locStr = [p.suburb, p.state].filter(Boolean).join(', ');
+  const website = websiteUrl(p.website);
+  const reviews = getReviews(slug);
+  const avg = avgRating(reviews);
+  const stars = avg > 0 ? '★'.repeat(Math.round(avg)) + '☆'.repeat(5 - Math.round(avg)) : '☆☆☆☆☆';
+
+  const actionBtns = [
+    p.phone ? `<a class="btn-action btn-primary-action" href="tel:${escHtml(p.phone)}">📞 ${escHtml(p.phone)}</a>` : '',
+    p.email ? `<a class="btn-action btn-secondary-action" href="mailto:${escHtml(p.email)}">✉️ Email</a>` : '',
+    website ? `<a class="btn-action btn-outline-action" href="${escHtml(website)}" target="_blank" rel="noopener">🌐 Website</a>` : '',
+  ].filter(Boolean).join('');
+
+  const badgesHtml = [
+    `<span class="badge badge-registered">✓ NDIS Registered</span>`,
+    p.featured ? `<span class="badge badge-featured">⭐ Featured</span>` : '',
+    `<span class="badge badge-verified">✓ Verified</span>`,
+    p.acceptingClients ? `<span class="badge badge-accepting">✓ Accepting Clients</span>` : '',
+  ].filter(Boolean).join('');
+
+  const servicesHtml = (p.services || []).map(s =>
+    `<span class="service-chip">${escHtml(s)}</span>`
+  ).join('');
+
+  const contactRows = [
+    p.phone   ? `<div class="detail-row"><span class="detail-icon">📞</span><a href="tel:${escHtml(p.phone)}">${escHtml(p.phone)}</a></div>` : '',
+    p.email   ? `<div class="detail-row"><span class="detail-icon">✉️</span><a href="mailto:${escHtml(p.email)}">${escHtml(p.email)}</a></div>` : '',
+    website   ? `<div class="detail-row"><span class="detail-icon">🌐</span><a href="${escHtml(website)}" target="_blank" rel="noopener">${escHtml(p.website)}</a></div>` : '',
+    p.address ? `<div class="detail-row"><span class="detail-icon">📍</span><span>${escHtml(p.address)}</span></div>` : '',
+    p.abn     ? `<div class="detail-row"><span class="detail-icon">🏢</span><span>ABN: ${escHtml(p.abn)}</span></div>` : '',
+    p.profession ? `<div class="detail-row"><span class="detail-icon">👤</span><span>${escHtml(p.profession)}</span></div>` : '',
+  ].filter(Boolean).join('');
+
+  const hoursHtml = p.hours ? `
+    <div class="info-card">
+      <div class="info-card-title">Opening Hours</div>
+      <div class="hours-grid">${fmtHours(p.hours)}</div>
+    </div>
+  ` : '';
+
+  const primaryService = p.services && p.services[0] ? p.services[0] : 'NDIS Services';
+
+  const profileHtml = `
+    <div class="provider-hero">
+      <div class="hero-avatar" style="background:${col}">${ini}</div>
+      <div class="hero-content">
+        <div class="hero-badges">${badgesHtml}</div>
+        <h1 class="hero-name">${escHtml(p.name)}</h1>
+        ${locStr ? `<div class="hero-location">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          ${escHtml(locStr)}
+        </div>` : ''}
+        ${avg > 0 ? `<div style="font-size:13px;color:var(--grey-500);margin-bottom:12px">
+          <span style="color:var(--accent)">${stars}</span>&nbsp; ${avg.toFixed(1)} (${reviews.length} review${reviews.length!==1?'s':''})
+        </div>` : ''}
+        ${actionBtns ? `<div class="hero-actions">${actionBtns}</div>` : ''}
+      </div>
+    </div>
+
+    <div class="services-section">
+      <div class="services-title">Services Offered (${(p.services||[]).length})</div>
+      <div class="services-grid">${servicesHtml || '<span style="color:var(--grey-400);font-size:13px">Not specified</span>'}</div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-card-title">Contact &amp; Details</div>
+        ${contactRows || '<span style="color:var(--grey-400);font-size:13px">No contact details available</span>'}
+      </div>
+      ${hoursHtml}
+    </div>
+
+    <div id="reviewsSection">
+      ${renderReviewsHtml(reviews, avg, stars)}
+    </div>
+
+    <div class="price-callout">
+      <div class="price-callout-icon">💰</div>
+      <div>
+        <h3>Check NDIS price limits for ${escHtml(primaryService)}</h3>
+        <p>View the current NDIS Pricing Arrangements. <a href="/ndis-prices.html">Open Price Guide →</a></p>
+      </div>
+    </div>
+
+    ${renderSimilar(allProviders, p, slug)}
+  `;
+
+  document.getElementById('profileContent').innerHTML = profileHtml;
+}
+
+// ─── BOOT ────────────────────────────────────────────────────────────────────
+async function boot() {
+  // Extract slug from pathname: /providers/[slug]
+  const pathParts = window.location.pathname.replace(/\/+$/, '').split('/');
+  const slug = pathParts[pathParts.length - 1];
+
+  if (!slug || slug === 'providers' || slug === 'index.html') {
+    window.location.href = '/';
+    return;
+  }
+
+  currentProviderSlug = slug;
+
+  // Update back link to preserve any previous search state
+  const ref = document.referrer;
+  if (ref && ref.includes(window.location.hostname) && !ref.includes('/providers/')) {
+    document.getElementById('backLink').href = ref;
+  }
+
+  // Load provider data
+  let allProviders = [];
+  try {
+    const resp = await fetch('/providers_data.json');
+    if (resp.ok) {
+      allProviders = await resp.json();
+    }
+  } catch(e) {
+    console.warn('Could not load providers_data.json', e);
+  }
+
+  // Find provider by slug
+  const provider = allProviders.find(p => makeSlug(p) === slug);
+
+  if (!provider) {
+    document.getElementById('profileContent').innerHTML = `
+      <div class="state-center">
+        <div class="state-icon">😔</div>
+        <div class="state-title">Provider not found</div>
+        <div class="state-text">We couldn't find a provider matching this URL. They may have been removed from the NDIS register.</div>
+        <a href="/" style="margin-top:20px;display:inline-block;background:var(--teal);color:white;padding:10px 24px;border-radius:10px;text-decoration:none;font-weight:600">Browse All Providers</a>
+      </div>
+    `;
+    document.getElementById('bc-current').textContent = 'Not found';
+    return;
+  }
+
+  updatePageMeta(provider, slug);
+  renderBreadcrumb(provider);
+  renderProfile(provider, allProviders.slice(0, 500), slug);
+}
+
+boot();
+</script>
+</body>
+</html>

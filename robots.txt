@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /scripts/
+Disallow: /netlify/
+Disallow: /node_modules/
+
+Sitemap: https://ndismart.netlify.app/sitemap.xml

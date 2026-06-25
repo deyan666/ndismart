@@ -1,0 +1,2 @@
+# Route all /providers/* requests to the profile template (200 = rewrite, not 301)
+/providers/*  /providers/index.html  200

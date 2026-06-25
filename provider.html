@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>List Your NDIS Practice | NDISmart — NDIS Provider Directory</title>
+<meta name="description" content="Add your NDIS practice to NDISmart's directory of 48,000+ providers. Submit your details in 3 easy steps — free listing, or upgrade to Featured for top placement.">
+<link rel="canonical" href="https://ndismart.netlify.app/provider.html">
+<meta property="og:title" content="List Your NDIS Practice | NDISmart">
+<meta property="og:description" content="Add your NDIS practice to NDISmart's directory. Free listing — or get Featured for top placement.">
+<meta property="og:url" content="https://ndismart.netlify.app/provider.html">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"How does billing work?","acceptedAnswer":{"@type":"Answer","text":"You're billed monthly via Stripe. Cancel any time from the billing portal and your featured status continues until the end of your billing period."}},
+    {"@type":"Question","name":"When does my listing go live?","acceptedAnswer":{"@type":"Answer","text":"Featured status is applied within minutes of payment. You'll appear at the top of relevant search results almost immediately."}},
+    {"@type":"Question","name":"Can I cancel anytime?","acceptedAnswer":{"@type":"Answer","text":"Yes — no lock-in contracts. Use the Manage Subscription tab to access your Stripe portal and cancel with one click."}},
+    {"@type":"Question","name":"What payment methods are accepted?","acceptedAnswer":{"@type":"Answer","text":"Visa, Mastercard, Amex, and Apple Pay / Google Pay via Stripe's secure checkout."}}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --teal: #4fc3a1;
+    --teal-dark: #3aab8a;
+    --teal-light: #e1f5ee;
+    --white: #ffffff;
+    --grey-50: #f8fafc;
+    --grey-100: #f1f5f9;
+    --grey-200: #e2e8f0;
+    --grey-300: #cbd5e1;
+    --grey-400: #94a3b8;
+    --grey-500: #64748b;
+    --grey-600: #475569;
+    --grey-700: #334155;
+    --grey-800: #1e293b;
+    --accent: #f59e0b;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.13);
+    --radius: 16px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--grey-50); color: var(--grey-800); }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--navy); padding: 0 24px; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+  .logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+  .logo-icon { width: 32px; height: 32px; background: var(--teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .logo-text { font-family: 'DM Serif Display', serif; font-size: 18px; color: white; }
+  .logo-text span { color: var(--teal); }
+  .back-link { font-size: 13px; color: rgba(255,255,255,0.6); text-decoration: none; display: flex; align-items: center; gap: 5px; transition: color 0.2s; }
+  .back-link:hover { color: white; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(140deg, var(--navy) 0%, #253561 60%, #1e3a5f 100%);
+    color: white; padding: 72px 24px 64px; text-align: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(79,195,161,0.15); color: var(--teal);
+    border: 1px solid rgba(79,195,161,0.3);
+    padding: 5px 16px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.3px; margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(30px, 5vw, 48px);
+    line-height: 1.15; margin-bottom: 16px;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .hero h1 em { color: var(--teal); font-style: italic; }
+  .hero p { font-size: 16px; color: rgba(255,255,255,0.65); max-width: 460px; margin: 0 auto 44px; line-height: 1.65; }
+  .hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .hero-stat-num { font-size: 30px; font-weight: 700; color: var(--teal); line-height: 1; }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 5px; }
+
+  /* ── PRICING ── */
+  .pricing-section { padding: 72px 0 56px; }
+  .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+  .section-eyebrow { text-align: center; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.4px; color: var(--teal); margin-bottom: 8px; }
+  .section-title { text-align: center; font-family: 'DM Serif Display', serif; font-size: clamp(24px, 3vw, 32px); color: var(--navy); margin-bottom: 8px; }
+  .section-sub { text-align: center; font-size: 14px; color: var(--grey-500); margin-bottom: 44px; }
+
+  .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .plan-card {
+    background: white; border: 2px solid var(--grey-200); border-radius: var(--radius);
+    padding: 30px 24px 28px; position: relative; cursor: pointer;
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  }
+  .plan-card:hover { border-color: var(--teal); box-shadow: var(--shadow-md); }
+  .plan-card.selected { border-color: var(--teal); box-shadow: 0 0 0 4px rgba(79,195,161,0.12), var(--shadow-md); }
+  .plan-card.popular { border-color: var(--teal); box-shadow: var(--shadow-lg); transform: translateY(-6px); }
+
+  .popular-badge {
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+    background: var(--teal); color: white; font-size: 11px; font-weight: 700;
+    padding: 4px 16px; border-radius: 20px; white-space: nowrap; letter-spacing: 0.3px;
+  }
+  .plan-radio {
+    position: absolute; top: 22px; right: 22px;
+    width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--grey-300);
+    display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+  }
+  .plan-card.selected .plan-radio { background: var(--teal); border-color: var(--teal); }
+  .plan-card.selected .plan-radio::after { content: '✓'; font-size: 11px; color: white; font-weight: 700; }
+
+  .plan-name { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey-500); margin-bottom: 12px; }
+  .plan-price { display: flex; align-items: baseline; gap: 3px; margin-bottom: 6px; }
+  .plan-price-num { font-family: 'DM Serif Display', serif; font-size: 42px; color: var(--navy); line-height: 1; }
+  .plan-price-per { font-size: 13px; color: var(--grey-400); }
+  .plan-desc { font-size: 13px; color: var(--grey-500); margin-bottom: 22px; line-height: 1.55; min-height: 40px; }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .plan-features li { font-size: 13px; color: var(--grey-700); display: flex; align-items: flex-start; gap: 9px; line-height: 1.4; }
+  .plan-features li .check { color: var(--teal); font-weight: 700; flex-shrink: 0; }
+  .plan-features li .dash { color: var(--grey-300); flex-shrink: 0; }
+  .plan-features li.off { color: var(--grey-400); }
+
+  /* ── FORM CARD ── */
+  .form-section { padding: 8px 0 72px; }
+  .form-card {
+    background: white; border-radius: var(--radius); box-shadow: var(--shadow-lg);
+    overflow: hidden; max-width: 560px; margin: 0 auto;
+  }
+  .form-tabs { display: flex; border-bottom: 1.5px solid var(--grey-100); }
+  .form-tab {
+    flex: 1; padding: 17px 12px; background: none; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+    color: var(--grey-400); cursor: pointer; border-bottom: 2.5px solid transparent;
+    margin-bottom: -1.5px; transition: all 0.15s;
+  }
+  .form-tab.active { color: var(--navy); border-bottom-color: var(--teal); }
+  .form-panel { padding: 28px 28px 24px; display: none; }
+  .form-panel.active { display: block; }
+
+  .plan-summary {
+    background: var(--teal-light); border: 1px solid #9dd4bc; border-radius: 10px;
+    padding: 12px 16px; font-size: 13px; color: #1e6b4a; font-weight: 500;
+    margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .plan-summary a { font-size: 12px; color: var(--teal-dark); cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+
+  .form-row { margin-bottom: 16px; }
+  .form-label { font-size: 12px; font-weight: 600; color: var(--grey-600); margin-bottom: 5px; display: block; letter-spacing: 0.2px; }
+  .form-input {
+    width: 100%; padding: 10px 14px;
+    border: 1.5px solid var(--grey-200); border-radius: 9px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--grey-800);
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(79,195,161,0.12); }
+  .form-input::placeholder { color: var(--grey-400); }
+
+  .form-error {
+    background: #fef2f2; border: 1px solid #fca5a5; color: #dc2626;
+    border-radius: 8px; padding: 10px 14px; font-size: 13px;
+    margin-bottom: 16px; display: none;
+  }
+  .form-error.show { display: block; }
+
+  .btn-pay {
+    width: 100%; padding: 14px; background: var(--navy); color: white; border: none;
+    border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, opacity 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 9px;
+  }
+  .btn-pay:hover { background: #253561; }
+  .btn-pay:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .secure-note {
+    text-align: center; font-size: 11px; color: var(--grey-400);
+    margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 5px;
+  }
+
+  .manage-desc { font-size: 13px; color: var(--grey-500); margin-bottom: 22px; line-height: 1.65; }
+
+  /* ── SUCCESS ── */
+  .success-panel {
+    display: none; text-align: center; padding: 52px 28px 44px;
+  }
+  .success-panel.show { display: block; }
+  .success-icon { font-size: 52px; margin-bottom: 18px; }
+  .success-panel h2 { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--navy); margin-bottom: 10px; }
+  .success-panel p { font-size: 14px; color: var(--grey-500); line-height: 1.7; max-width: 380px; margin: 0 auto 28px; }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 11px 24px; border-radius: 9px;
+    border: 2px solid var(--navy); color: var(--navy); background: none;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600;
+    cursor: pointer; text-decoration: none; transition: all 0.15s;
+  }
+  .btn-outline:hover { background: var(--navy); color: white; }
+
+  /* ── FAQ ── */
+  .faq-section { padding: 64px 0; background: white; border-top: 1px solid var(--grey-100); }
+  .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+  .faq-item h4 { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 7px; }
+  .faq-item p { font-size: 13px; color: var(--grey-500); line-height: 1.65; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy); color: rgba(255,255,255,0.4); text-align: center; padding: 22px; font-size: 12px; }
+  footer a { color: rgba(255,255,255,0.4); }
+
+  /* ── MULTI-STEP ONBOARDING FORM ── */
+  .onboard-section { padding: 64px 0 48px; background: var(--grey-50); border-top: 1px solid var(--grey-200); }
+  .onboard-card {
+    background: white; border-radius: var(--radius); box-shadow: var(--shadow-lg);
+    overflow: hidden; max-width: 600px; margin: 0 auto;
+  }
+  .step-indicator { display: flex; padding: 20px 28px 0; gap: 0; }
+  .step-dot {
+    flex: 1; position: relative; text-align: center;
+  }
+  .step-dot::before {
+    content:''; display: block; height: 3px;
+    background: var(--grey-200); position: absolute; top: 14px; left: 50%; right: -50%;
+    z-index: 0;
+  }
+  .step-dot:last-child::before { display: none; }
+  .step-dot.done::before { background: var(--teal); }
+  .step-circle {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--grey-200); color: var(--grey-500);
+    font-size: 12px; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+    position: relative; z-index: 1; transition: all 0.2s;
+  }
+  .step-dot.active .step-circle { background: var(--teal); color: white; }
+  .step-dot.done .step-circle { background: var(--navy); color: white; }
+  .step-label { font-size: 10px; color: var(--grey-400); margin-top: 4px; white-space: nowrap; }
+  .step-dot.active .step-label { color: var(--navy); font-weight: 600; }
+
+  .onboard-body { padding: 24px 28px 28px; }
+  .onboard-step { display: none; }
+  .onboard-step.active { display: block; }
+  .onboard-step-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .onboard-step-sub { font-size: 13px; color: var(--grey-500); margin-bottom: 22px; }
+
+  .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 480px) { .form-2col { grid-template-columns: 1fr; } }
+
+  .services-checkboxes {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    max-height: 220px; overflow-y: auto;
+    border: 1.5px solid var(--grey-200); border-radius: 9px;
+    padding: 12px; background: var(--grey-50);
+  }
+  .services-checkboxes label {
+    display: flex; align-items: flex-start; gap: 7px;
+    font-size: 12px; color: var(--grey-700); cursor: pointer; line-height: 1.4;
+  }
+  .services-checkboxes input[type=checkbox] { accent-color: var(--teal); flex-shrink: 0; margin-top: 1px; }
+
+  .tag-input-wrap {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    border: 1.5px solid var(--grey-200); border-radius: 9px;
+    padding: 8px 12px; min-height: 44px; cursor: text;
+    transition: border-color 0.2s;
+  }
+  .tag-input-wrap:focus-within { border-color: var(--teal); }
+  .suburb-tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--teal-light); color: #2a7d5e;
+    font-size: 12px; font-weight: 500; padding: 3px 8px; border-radius: 20px;
+  }
+  .suburb-tag button { background: none; border: none; cursor: pointer; font-size: 13px; color: #2a7d5e; padding: 0; line-height: 1; }
+  .tag-input { border: none; outline: none; font-family: 'DM Sans',sans-serif; font-size: 14px; background: transparent; min-width: 120px; flex: 1; }
+
+  .char-count { font-size: 11px; color: var(--grey-400); text-align: right; margin-top: 3px; }
+  .char-count.warn { color: #f59e0b; }
+
+  .file-upload-wrap {
+    border: 2px dashed var(--grey-200); border-radius: 9px;
+    padding: 20px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s;
+  }
+  .file-upload-wrap:hover { border-color: var(--teal); background: var(--teal-light); }
+  .file-upload-wrap.has-file { border-color: var(--teal); background: var(--teal-light); }
+  .file-upload-label { font-size: 13px; color: var(--grey-500); cursor: pointer; }
+  .file-upload-label strong { color: var(--teal-dark); }
+  .file-upload-preview { font-size: 12px; color: var(--teal-dark); margin-top: 6px; font-weight: 500; }
+
+  .onboard-actions { display: flex; gap: 12px; margin-top: 24px; }
+  .btn-prev { flex: 0 0 auto; padding: 12px 24px; border-radius: 10px; font-family: 'DM Sans',sans-serif; font-size: 14px; font-weight: 600; border: 1.5px solid var(--grey-200); background: white; color: var(--grey-600); cursor: pointer; transition: all 0.15s; }
+  .btn-prev:hover { border-color: var(--teal); color: var(--teal); }
+  .btn-next { flex: 1; padding: 12px; border-radius: 10px; font-family: 'DM Sans',sans-serif; font-size: 14px; font-weight: 600; background: var(--teal); color: white; border: none; cursor: pointer; transition: background 0.2s; }
+  .btn-next:hover { background: var(--teal-dark); }
+  .btn-submit-listing { flex: 1; padding: 12px; border-radius: 10px; font-family: 'DM Sans',sans-serif; font-size: 14px; font-weight: 600; background: var(--navy); color: white; border: none; cursor: pointer; transition: background 0.2s; }
+  .btn-submit-listing:hover { background: #253561; }
+  .btn-submit-listing:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .upgrade-divider { text-align: center; padding: 24px; font-size: 18px; font-weight: 700; color: var(--navy); font-family: 'DM Serif Display', serif; }
+
+  .onboard-success { display: none; text-align: center; padding: 48px 28px; }
+  .onboard-success.show { display: block; }
+  .onboard-success-icon { font-size: 56px; margin-bottom: 18px; }
+  .onboard-success h2 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 10px; }
+  .onboard-success p { font-size: 14px; color: var(--grey-500); line-height: 1.65; margin-bottom: 24px; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .hero { padding: 48px 20px 44px; }
+    .hero-stats { gap: 28px; }
+    .plans-grid { grid-template-columns: 1fr; gap: 16px; }
+    .plan-card.popular { transform: none; }
+    .pricing-section { padding: 48px 0 36px; }
+    .form-panel { padding: 22px 20px 20px; }
+    .form-section { padding: 0 0 48px; }
+    .services-checkboxes { grid-template-columns: 1fr; }
+    .onboard-body { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <a class="logo" href="ndis_directory.html">
+    <div class="logo-icon">🧩</div>
+    <div class="logo-text">NDIS<span>mart</span></div>
+  </a>
+  <a class="back-link" href="ndis_directory.html">← Back to Directory</a>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">⭐ For NDIS Providers</div>
+  <h1>Get found by more<br><em>NDIS participants</em></h1>
+  <p>Stand out in the directory with a Featured listing. Appear first in search results for participants in your area.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">12,000+</div>
+      <div class="hero-stat-label">Registered providers</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">Daily</div>
+      <div class="hero-stat-label">Active searches</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">Cancel</div>
+      <div class="hero-stat-label">Anytime, no lock-in</div>
+    </div>
+  </div>
+</section>
+
+<!-- Multi-step provider onboarding form -->
+<section class="onboard-section" id="submitListing">
+  <div class="container">
+    <div class="section-eyebrow">Submit Your Practice</div>
+    <h2 class="section-title">Get listed in 3 steps</h2>
+    <p class="section-sub">It's free. Submit your details and we'll add you to the directory.</p>
+
+    <div class="onboard-card" id="onboardCard">
+
+      <!-- Success state -->
+      <div class="onboard-success" id="onboardSuccess">
+        <div class="onboard-success-icon">🎉</div>
+        <h2>Listing submitted!</h2>
+        <p>We've received your details and will review them shortly. Your free listing will appear in the directory within 1–2 business days.<br><br>Want more visibility? Upgrade to Featured below.</p>
+        <a href="#upgrade" class="btn-next" style="display:inline-block;text-decoration:none;padding:12px 28px;max-width:260px">⭐ Upgrade my listing →</a>
+      </div>
+
+      <!-- Step indicator -->
+      <div class="step-indicator" id="stepIndicator">
+        <div class="step-dot active" id="stepDot1">
+          <div class="step-circle">1</div>
+          <div class="step-label">Business Info</div>
+        </div>
+        <div class="step-dot" id="stepDot2">
+          <div class="step-circle">2</div>
+          <div class="step-label">Services</div>
+        </div>
+        <div class="step-dot" id="stepDot3">
+          <div class="step-circle">3</div>
+          <div class="step-label">Profile</div>
+        </div>
+      </div>
+
+      <!-- Hidden Netlify form (data target for submission) -->
+      <form id="netlifyForm" name="provider-submission" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:none">
+        <input type="hidden" name="form-name" value="provider-submission">
+        <input name="bot-field">
+        <input name="businessName" id="nf-businessName">
+        <input name="abn" id="nf-abn">
+        <input name="ndisReg" id="nf-ndisReg">
+        <input name="email" id="nf-email">
+        <input name="phone" id="nf-phone">
+        <input name="services" id="nf-services">
+        <input name="suburbs" id="nf-suburbs">
+        <input name="languages" id="nf-languages">
+        <input name="description" id="nf-description">
+        <input name="website" id="nf-website">
+        <button type="submit" id="nfSubmitBtn">Submit</button>
+      </form>
+
+      <div class="onboard-body">
+
+        <!-- ── STEP 1 ── -->
+        <div class="onboard-step active" id="onboardStep1">
+          <div class="onboard-step-title">Business Details</div>
+          <div class="onboard-step-sub">Tell us about your practice. Step 1 of 3.</div>
+          <div class="form-row">
+            <label class="form-label">Business / Practice Name *</label>
+            <input class="form-input" id="ob-businessName" type="text" placeholder="e.g. Sunrise Support Services">
+          </div>
+          <div class="form-2col">
+            <div class="form-row">
+              <label class="form-label">ABN *</label>
+              <input class="form-input" id="ob-abn" type="text" inputmode="numeric" maxlength="14" placeholder="12 345 678 901">
+            </div>
+            <div class="form-row">
+              <label class="form-label">NDIS Registration No. <span style="color:var(--grey-400);font-weight:400">(if known)</span></label>
+              <input class="form-input" id="ob-ndisReg" type="text" placeholder="4050XXXXXX">
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Contact Email *</label>
+            <input class="form-input" id="ob-email" type="email" placeholder="you@yourpractice.com.au">
+          </div>
+          <div class="form-row">
+            <label class="form-label">Phone *</label>
+            <input class="form-input" id="ob-phone" type="tel" placeholder="0412 345 678">
+          </div>
+          <div class="form-error" id="ob-err1"></div>
+          <div class="onboard-actions">
+            <button class="btn-next" onclick="nextStep(1)">Next: Services →</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 2 ── -->
+        <div class="onboard-step" id="onboardStep2">
+          <div class="onboard-step-title">Services &amp; Coverage</div>
+          <div class="onboard-step-sub">Which NDIS supports do you provide? Step 2 of 3.</div>
+          <div class="form-row">
+            <label class="form-label">Services offered *</label>
+            <div class="services-checkboxes" id="ob-services">
+              <label><input type="checkbox" value="Daily Personal Activities"> Daily Personal Activities</label>
+              <label><input type="checkbox" value="High Intensity Daily Personal Activities"> High Intensity Daily</label>
+              <label><input type="checkbox" value="Therapeutic Supports"> Therapeutic Supports</label>
+              <label><input type="checkbox" value="Plan Management"> Plan Management</label>
+              <label><input type="checkbox" value="Support Coordination"> Support Coordination</label>
+              <label><input type="checkbox" value="Behaviour Support"> Behaviour Support</label>
+              <label><input type="checkbox" value="Community nursing care for high needs"> Community Nursing</label>
+              <label><input type="checkbox" value="Household tasks"> Household Tasks</label>
+              <label><input type="checkbox" value="Group and Centre Based Activities"> Group Activities</label>
+              <label><input type="checkbox" value="Participation in community/social and civic activities"> Social Participation</label>
+              <label><input type="checkbox" value="Personal Mobility Equipment"> Personal Mobility Equipment</label>
+              <label><input type="checkbox" value="Specialist Disability Accommodation"> SDA Housing</label>
+              <label><input type="checkbox" value="Assistance with travel/transport arrangements"> Transport</label>
+              <label><input type="checkbox" value="Development of daily living and life skills"> Daily Living Skills</label>
+              <label><input type="checkbox" value="Communication and information equipment"> Communication Equipment</label>
+              <label><input type="checkbox" value="Assistive products for household tasks"> Assistive Products</label>
+              <label><input type="checkbox" value="Innovative Community Participation"> Innovative Community</label>
+              <label><input type="checkbox" value="Accommodation / Tenancy Assistance"> Tenancy Assistance</label>
+            </div>
+          </div>
+          <div class="form-row" style="margin-top:14px">
+            <label class="form-label">Suburbs / service areas served</label>
+            <div class="tag-input-wrap" id="suburbTagWrap" onclick="document.getElementById('suburbInput').focus()">
+              <input class="tag-input" id="suburbInput" placeholder="Type a suburb and press Enter…" onkeydown="handleSuburbKey(event)">
+            </div>
+            <div style="font-size:11px;color:var(--grey-400);margin-top:4px">Press Enter or comma to add each suburb</div>
+          </div>
+          <div class="form-row" style="margin-top:14px">
+            <label class="form-label">Languages spoken (other than English)</label>
+            <input class="form-input" id="ob-languages" type="text" placeholder="e.g. Arabic, Mandarin, AUSLAN">
+          </div>
+          <div class="form-error" id="ob-err2"></div>
+          <div class="onboard-actions">
+            <button class="btn-prev" onclick="prevStep(2)">← Back</button>
+            <button class="btn-next" onclick="nextStep(2)">Next: Profile →</button>
+          </div>
+        </div>
+
+        <!-- ── STEP 3 ── -->
+        <div class="onboard-step" id="onboardStep3">
+          <div class="onboard-step-title">Your Profile</div>
+          <div class="onboard-step-sub">Final details for your listing. Step 3 of 3.</div>
+          <div class="form-row">
+            <label class="form-label">Short Description <span style="color:var(--grey-400);font-weight:400">(max 300 characters)</span></label>
+            <textarea class="form-input" id="ob-description" rows="4" maxlength="300" placeholder="Describe your practice, specialisations, and the participants you support…" oninput="updateCharCount(this)" style="resize:vertical"></textarea>
+            <div class="char-count" id="ob-charCount">0 / 300</div>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Website URL</label>
+            <input class="form-input" id="ob-website" type="url" placeholder="https://www.yourpractice.com.au">
+          </div>
+          <div class="form-row">
+            <label class="form-label">Logo / Practice Photo <span style="color:var(--grey-400);font-weight:400">(max 2MB, JPG or PNG)</span></label>
+            <div class="file-upload-wrap" id="fileWrap" onclick="document.getElementById('ob-logo').click()">
+              <div class="file-upload-label">
+                <strong>Click to upload</strong> or drag and drop<br>JPG, PNG up to 2 MB
+              </div>
+              <div class="file-upload-preview" id="filePreview" style="display:none"></div>
+              <input type="file" id="ob-logo" accept="image/jpeg,image/png" style="display:none" onchange="handleLogoUpload(this)">
+            </div>
+          </div>
+          <div class="form-error" id="ob-err3"></div>
+          <div class="onboard-actions">
+            <button class="btn-prev" onclick="prevStep(3)">← Back</button>
+            <button class="btn-submit-listing" id="submitListingBtn" onclick="submitListing()">🚀 Submit Free Listing</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="upgrade-divider" id="upgrade">⬇ Want more visibility? Upgrade your listing</div>
+
+<!-- Pricing -->
+<section class="pricing-section">
+  <div class="container">
+    <div class="section-eyebrow">Pricing</div>
+    <h2 class="section-title">Choose your plan</h2>
+    <p class="section-sub">Select a plan below, then complete your details to get started.</p>
+
+    <div class="plans-grid">
+
+      <!-- Free -->
+      <div class="plan-card" id="planFree" onclick="selectPlan('free')">
+        <div class="plan-radio"></div>
+        <div class="plan-name">Free</div>
+        <div class="plan-price">
+          <span class="plan-price-num">$0</span>
+          <span class="plan-price-per">&nbsp;/ forever</span>
+        </div>
+        <p class="plan-desc">You're already listed. A basic profile at no cost.</p>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Listed in directory</li>
+          <li><span class="check">✓</span> Search visibility</li>
+          <li class="off"><span class="dash">—</span> Featured badge</li>
+          <li class="off"><span class="dash">—</span> Top of results</li>
+          <li class="off"><span class="dash">—</span> Priority placement</li>
+          <li class="off"><span class="dash">—</span> Dedicated profile page</li>
+        </ul>
+      </div>
+
+      <!-- Featured -->
+      <div class="plan-card popular selected" id="planFeatured" onclick="selectPlan('featured')">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-radio"></div>
+        <div class="plan-name">Featured</div>
+        <div class="plan-price">
+          <span class="plan-price-num">$49</span>
+          <span class="plan-price-per">&nbsp;/ month AUD</span>
+        </div>
+        <p class="plan-desc">Gold badge, top placement in search results for your services.</p>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Listed in directory</li>
+          <li><span class="check">✓</span> Search visibility</li>
+          <li><span class="check">✓</span> ⭐ Featured badge on card</li>
+          <li><span class="check">✓</span> Top of search results</li>
+          <li><span class="check">✓</span> Priority placement</li>
+          <li class="off"><span class="dash">—</span> Dedicated profile page</li>
+        </ul>
+      </div>
+
+      <!-- Premium -->
+      <div class="plan-card" id="planPremium" onclick="selectPlan('premium')">
+        <div class="plan-radio"></div>
+        <div class="plan-name">Premium</div>
+        <div class="plan-price">
+          <span class="plan-price-num">$99</span>
+          <span class="plan-price-per">&nbsp;/ month AUD</span>
+        </div>
+        <p class="plan-desc">Everything in Featured plus a full profile page and logo upload.</p>
+        <ul class="plan-features">
+          <li><span class="check">✓</span> Everything in Featured</li>
+          <li><span class="check">✓</span> Dedicated profile page</li>
+          <li><span class="check">✓</span> Logo / photo upload</li>
+          <li><span class="check">✓</span> Extended description</li>
+          <li><span class="check">✓</span> Priority contact routing</li>
+          <li><span class="check">✓</span> Monthly performance report</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Form -->
+<section class="form-section">
+  <div class="container">
+    <div class="form-card" id="formCard">
+
+      <!-- Success -->
+      <div class="success-panel" id="successPanel">
+        <div class="success-icon">🎉</div>
+        <h2>You're now Featured!</h2>
+        <p>Your listing has been upgraded. It may take a few minutes to appear at the top of results. A receipt has been sent to your email.</p>
+        <a href="ndis_directory.html" class="btn-outline">View the directory →</a>
+      </div>
+
+      <!-- Tabs -->
+      <div id="formTabs" class="form-tabs">
+        <button class="form-tab active" id="tabGet" onclick="showTab('get')">Get Featured</button>
+        <button class="form-tab" id="tabManage" onclick="showTab('manage')">Manage Subscription</button>
+      </div>
+
+      <!-- Get Featured panel -->
+      <div class="form-panel active" id="panelGet">
+        <div class="plan-summary" id="planSummary">
+          <span>⭐ Featured — <strong>$49 / month AUD</strong></span>
+          <a onclick="scrollToPricing()">Change plan</a>
+        </div>
+        <div class="form-error" id="getError"></div>
+        <div class="form-row">
+          <label class="form-label">Business / Practice Name</label>
+          <input class="form-input" id="businessName" type="text" placeholder="e.g. Sydney Support Services" />
+        </div>
+        <div class="form-row">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" id="signupEmail" type="email" placeholder="you@example.com.au" />
+        </div>
+        <button class="btn-pay" id="payBtn" onclick="startCheckout()">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Continue to Payment
+        </button>
+        <div class="secure-note">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Secured by Stripe · Cancel anytime · No lock-in
+        </div>
+      </div>
+
+      <!-- Manage panel -->
+      <div class="form-panel" id="panelManage">
+        <p class="manage-desc">Enter the email you signed up with. We'll open the Stripe billing portal where you can update payment details, change plans, or cancel.</p>
+        <div class="form-error" id="manageError"></div>
+        <div class="form-row">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" id="manageEmail" type="email" placeholder="you@example.com.au" />
+        </div>
+        <button class="btn-pay" id="portalBtn" onclick="openPortal()">
+          Open Billing Portal →
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">Common questions</h2>
+    <br><br>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>How does billing work?</h4>
+        <p>You're billed monthly via Stripe. Cancel any time from the billing portal and your featured status continues until the end of your billing period.</p>
+      </div>
+      <div class="faq-item">
+        <h4>When does my listing go live?</h4>
+        <p>Featured status is applied within minutes of payment. You'll appear at the top of relevant search results almost immediately.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can I cancel anytime?</h4>
+        <p>Yes — no lock-in contracts. Use the "Manage Subscription" tab above to access your Stripe portal and cancel with one click.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What payment methods are accepted?</h4>
+        <p>Visa, Mastercard, Amex, and Apple Pay / Google Pay via Stripe's secure checkout.</p>
+      </div>
+      <div class="faq-item">
+        <h4>I'm already listed — do I need to sign up again?</h4>
+        <p>No. If you're in the NDIS provider register your basic listing already exists. Purchasing Featured upgrades your existing listing.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What's the difference between Featured and Premium?</h4>
+        <p>Featured gets you top placement and the gold badge. Premium adds a dedicated full-profile page, logo upload, and monthly performance reports.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 NDISmart &nbsp;·&nbsp; <a href="ndis_directory.html">Back to Directory</a> &nbsp;·&nbsp; All payments secured by Stripe
+</footer>
+
+<script>
+let selectedPlan = 'featured';
+
+const PLAN_LABELS = {
+  free:     { summary: '✓ Free Listing — <strong>$0</strong>', btn: 'Continue (Free)', price: null },
+  featured: { summary: '⭐ Featured — <strong>$49 / month AUD</strong>', btn: 'Continue to Payment', price: '$49/mo' },
+  premium:  { summary: '🌟 Premium — <strong>$99 / month AUD</strong>', btn: 'Continue to Payment', price: '$99/mo' },
+};
+
+function selectPlan(plan) {
+  selectedPlan = plan;
+  document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
+  const ids = { free: 'planFree', featured: 'planFeatured', premium: 'planPremium' };
+  document.getElementById(ids[plan]).classList.add('selected');
+
+  const info = PLAN_LABELS[plan];
+  document.getElementById('planSummary').querySelector('span').innerHTML = info.summary;
+  document.getElementById('payBtn').innerHTML = `
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+    ${info.btn}
+  `;
+
+  document.getElementById('formCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function scrollToPricing() {
+  document.querySelector('.pricing-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+function showTab(tab) {
+  document.getElementById('tabGet').classList.toggle('active', tab === 'get');
+  document.getElementById('tabManage').classList.toggle('active', tab === 'manage');
+  document.getElementById('panelGet').classList.toggle('active', tab === 'get');
+  document.getElementById('panelManage').classList.toggle('active', tab === 'manage');
+}
+
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add('show');
+}
+function clearError(id) {
+  document.getElementById(id).classList.remove('show');
+}
+
+async function startCheckout() {
+  if (selectedPlan === 'free') { window.location.href = 'ndis_directory.html'; return; }
+
+  const name  = document.getElementById('businessName').value.trim();
+  const email = document.getElementById('signupEmail').value.trim();
+  clearError('getError');
+
+  if (!name)  { showError('getError', 'Please enter your business name.'); return; }
+  if (!email || !email.includes('@')) { showError('getError', 'Please enter a valid email address.'); return; }
+
+  const btn = document.getElementById('payBtn');
+  btn.disabled = true;
+  btn.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="animation:spin 1s linear infinite"><path d="M21 12a9 9 0 1 1-6.2-8.56"/></svg> Redirecting to Stripe…`;
+
+  try {
+    const res = await fetch('/api/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, plan: selectedPlan }),
+    });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error(data.error || 'Could not start checkout. Please try again.');
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Continue to Payment`;
+    showError('getError', err.message);
+  }
+}
+
+async function openPortal() {
+  const email = document.getElementById('manageEmail').value.trim();
+  clearError('manageError');
+  if (!email || !email.includes('@')) { showError('manageError', 'Please enter your email address.'); return; }
+
+  const btn = document.getElementById('portalBtn');
+  btn.disabled = true;
+  btn.textContent = 'Loading…';
+
+  try {
+    const res = await fetch('/api/customer-portal', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error(data.error || 'No subscription found for that email.');
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Open Billing Portal →';
+    showError('manageError', err.message);
+  }
+}
+
+// Handle Stripe redirect back
+const params = new URLSearchParams(window.location.search);
+if (params.get('success') === 'true') {
+  document.getElementById('formTabs').style.display = 'none';
+  document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('successPanel').classList.add('show');
+  document.getElementById('formCard').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ─── MULTI-STEP ONBOARDING ────────────────────────────────────────────────────
+let currentStep = 1;
+const suburbTags = [];
+
+function showStep(n) {
+  currentStep = n;
+  [1,2,3].forEach(i => {
+    document.getElementById(`onboardStep${i}`).classList.toggle('active', i === n);
+    const dot = document.getElementById(`stepDot${i}`);
+    dot.classList.toggle('active', i === n);
+    dot.classList.toggle('done', i < n);
+  });
+}
+
+function validateStep1() {
+  const name  = document.getElementById('ob-businessName').value.trim();
+  const abn   = document.getElementById('ob-abn').value.replace(/\s/g,'');
+  const email = document.getElementById('ob-email').value.trim();
+  const phone = document.getElementById('ob-phone').value.trim();
+  const errEl = document.getElementById('ob-err1');
+  errEl.style.display = 'none';
+  if (!name)  { showObErr('ob-err1','Please enter your business name.'); return false; }
+  if (abn.length !== 11 || !/^\d{11}$/.test(abn)) { showObErr('ob-err1','ABN must be 11 digits (e.g. 12 345 678 901).'); return false; }
+  if (!email || !email.includes('@')) { showObErr('ob-err1','Please enter a valid email address.'); return false; }
+  if (!phone) { showObErr('ob-err1','Please enter a contact phone number.'); return false; }
+  return true;
+}
+
+function validateStep2() {
+  const checked = document.querySelectorAll('#ob-services input:checked');
+  if (!checked.length) { showObErr('ob-err2','Please select at least one service.'); return false; }
+  return true;
+}
+
+function showObErr(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.style.display = 'block';
+  el.classList.add('show');
+}
+
+function nextStep(from) {
+  if (from === 1 && !validateStep1()) return;
+  if (from === 2 && !validateStep2()) return;
+  showStep(from + 1);
+}
+
+function prevStep(from) {
+  showStep(from - 1);
+}
+
+// Suburb tag input
+function handleSuburbKey(e) {
+  if (e.key === 'Enter' || e.key === ',') {
+    e.preventDefault();
+    const val = e.target.value.replace(/,/g,'').trim();
+    if (val) addSuburbTag(val);
+    e.target.value = '';
+  }
+}
+
+function addSuburbTag(name) {
+  if (suburbTags.includes(name)) return;
+  suburbTags.push(name);
+  const wrap = document.getElementById('suburbTagWrap');
+  const input = document.getElementById('suburbInput');
+  const tag = document.createElement('span');
+  tag.className = 'suburb-tag';
+  tag.innerHTML = `${name} <button type="button" onclick="removeSuburbTag('${name}',this.parentElement)">×</button>`;
+  wrap.insertBefore(tag, input);
+}
+
+function removeSuburbTag(name, el) {
+  const idx = suburbTags.indexOf(name);
+  if (idx !== -1) suburbTags.splice(idx,1);
+  el.remove();
+}
+
+function updateCharCount(el) {
+  const n = el.value.length;
+  const counter = document.getElementById('ob-charCount');
+  counter.textContent = `${n} / 300`;
+  counter.classList.toggle('warn', n > 270);
+}
+
+function handleLogoUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 2 * 1024 * 1024) {
+    alert('File is too large (max 2 MB). Please choose a smaller image.');
+    input.value = '';
+    return;
+  }
+  const wrap = document.getElementById('fileWrap');
+  const preview = document.getElementById('filePreview');
+  wrap.classList.add('has-file');
+  preview.textContent = `✓ ${file.name} (${(file.size/1024).toFixed(0)} KB)`;
+  preview.style.display = 'block';
+}
+
+async function submitListing() {
+  const description = document.getElementById('ob-description').value.trim();
+  const errEl = document.getElementById('ob-err3');
+  errEl.style.display = 'none';
+
+  // Gather all data
+  const services = [...document.querySelectorAll('#ob-services input:checked')].map(cb => cb.value);
+  const formData = {
+    businessName: document.getElementById('ob-businessName').value.trim(),
+    abn: document.getElementById('ob-abn').value.trim(),
+    ndisReg: document.getElementById('ob-ndisReg').value.trim(),
+    email: document.getElementById('ob-email').value.trim(),
+    phone: document.getElementById('ob-phone').value.trim(),
+    services: services.join(', '),
+    suburbs: suburbTags.join(', '),
+    languages: document.getElementById('ob-languages').value.trim(),
+    description,
+    website: document.getElementById('ob-website').value.trim(),
+  };
+
+  // Populate hidden Netlify form fields
+  Object.entries(formData).forEach(([k,v]) => {
+    const el = document.getElementById('nf-' + k);
+    if (el) el.value = v;
+  });
+
+  const btn = document.getElementById('submitListingBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+
+  try {
+    const body = new URLSearchParams({ ...formData });
+    const res = await fetch('/api/submit-listing', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() });
+    if (res.ok || res.status === 200) {
+      document.getElementById('stepIndicator').style.display = 'none';
+      document.getElementById('onboardStep3').style.display = 'none';
+      document.getElementById('onboardSuccess').classList.add('show');
+    } else {
+      throw new Error('Submission failed. Please try again.');
+    }
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = '🚀 Submit Free Listing';
+    showObErr('ob-err3', e.message);
+  }
+}
+
+// Spinner animation
+const style = document.createElement('style');
+style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>
