@@ -9,11 +9,32 @@ const PORT = process.env.PORT || 3000;
 
 // Load providers once at startup and cache in memory
 let cachedProviders = null;
+let suburbCoords = {};
+
+function loadSuburbCoords() {
+  try {
+    const raw = fs.readFileSync(path.join(__dirname, 'suburb_coords.json'), 'utf8');
+    suburbCoords = JSON.parse(raw);
+    console.log(`Loaded ${Object.keys(suburbCoords).length} suburb coordinates`);
+  } catch (e) {
+    console.log('suburb_coords.json not found — run build_suburb_coords.js to generate it');
+  }
+}
+
 function getProviders() {
   if (cachedProviders) return cachedProviders;
+  loadSuburbCoords();
   try {
     const raw = fs.readFileSync(path.join(__dirname, 'providers_data.json'), 'utf8');
-    cachedProviders = JSON.parse(raw);
+    const providers = JSON.parse(raw);
+    // Attach coords to each provider once at load time
+    providers.forEach(p => {
+      const key = (p.suburb || '').toLowerCase().trim();
+      if (key && suburbCoords[key]) {
+        p._coords = suburbCoords[key];
+      }
+    });
+    cachedProviders = providers;
     console.log(`Loaded ${cachedProviders.length} providers`);
   } catch (e) {
     console.error('Failed to load providers_data.json:', e.message);
