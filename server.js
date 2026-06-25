@@ -1,10 +1,27 @@
 const express = require('express');
 const compression = require('compression');
 const path = require('path');
+const fs = require('fs');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Load providers once at startup and cache in memory
+let cachedProviders = null;
+function getProviders() {
+  if (cachedProviders) return cachedProviders;
+  try {
+    const raw = fs.readFileSync(path.join(__dirname, 'providers_data.json'), 'utf8');
+    cachedProviders = JSON.parse(raw);
+    console.log(`Loaded ${cachedProviders.length} providers`);
+  } catch (e) {
+    console.error('Failed to load providers_data.json:', e.message);
+    cachedProviders = [];
+  }
+  return cachedProviders;
+}
+getProviders();
 
 app.use(compression());
 
@@ -20,6 +37,49 @@ app.use(express.static(path.join(__dirname)));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'ndis_directory.html'));
+});
+
+// Provider search API — replaces the 36MB client-side JSON fetch
+app.get('/api/providers', (req, res) => {
+  const providers = getProviders();
+  const q       = (req.query.q       || '').toLowerCase().trim();
+  const service = (req.query.service || '').toLowerCase().trim();
+  const state   = (req.query.state   || '').toLowerCase().trim();
+  const limit   = Math.min(parseInt(req.query.limit  || '200', 10), 500);
+  const offset  = parseInt(req.query.offset || '0', 10);
+
+  let results = providers;
+
+  if (q) {
+    results = results.filter(p =>
+      (p.name    || '').toLowerCase().includes(q) ||
+      (p.suburb  || '').toLowerCase().includes(q) ||
+      (p.state   || '').toLowerCase().includes(q) ||
+      (p.postcode|| '').includes(q)
+    );
+  }
+
+  if (service) {
+    results = results.filter(p =>
+      (p.services || []).some(s => s.toLowerCase().includes(service))
+    );
+  }
+
+  if (state) {
+    results = results.filter(p => (p.state || '').toLowerCase() === state);
+  }
+
+  // Featured first, then alphabetical
+  results = [...results].sort((a, b) => {
+    if (a.featured && !b.featured) return -1;
+    if (!a.featured && b.featured) return 1;
+    return (a.name || '').localeCompare(b.name || '');
+  });
+
+  res.json({
+    total: results.length,
+    providers: results.slice(offset, offset + limit),
+  });
 });
 
 const PLANS = {
