@@ -64,15 +64,17 @@ app.get('/', (req, res) => {
 let suburbIndex = null;
 function getSuburbIndex() {
   if (suburbIndex) return suburbIndex;
-  // Build suburb→state map from provider data
   const stateMap = {};
+  const postcodeMap = {};
   getProviders().forEach(p => {
     const key = (p.suburb || '').toLowerCase().trim();
-    if (key && p.state && !stateMap[key]) stateMap[key] = p.state.toUpperCase();
+    if (key && p.state    && !stateMap[key])    stateMap[key]    = p.state.toUpperCase();
+    if (key && p.postcode && !postcodeMap[key]) postcodeMap[key] = p.postcode;
   });
   suburbIndex = Object.keys(suburbCoords).sort().map(name => ({
     name,
-    state: stateMap[name] || '',
+    state:    stateMap[name]    || '',
+    postcode: postcodeMap[name] || '',
   }));
   return suburbIndex;
 }
