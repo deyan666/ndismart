@@ -60,6 +60,28 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'ndis_directory.html'));
 });
 
+// Lightweight map pins — all providers that have coordinates, slim fields only
+let mapPinsCache = null;
+app.get('/api/map-pins', (req, res) => {
+  if (!mapPinsCache) {
+    const providers = getProviders();
+    mapPinsCache = providers
+      .filter(p => p._coords)
+      .map(p => ({
+        name:     (p.outlet || p.name || '').replace(/^\([^)]+\)\s*/i, ''),
+        suburb:   p.suburb   || '',
+        state:    p.state    || '',
+        _coords:  p._coords,
+        featured: p.featured || false,
+        services: p.services || [],
+        phone:    p.phone    || null,
+        slug:     p.slug     || null,
+      }));
+    console.log(`Map pins cached: ${mapPinsCache.length} providers with coords`);
+  }
+  res.json(mapPinsCache);
+});
+
 // Provider search API — replaces the 36MB client-side JSON fetch
 app.get('/api/providers', (req, res) => {
   const providers = getProviders();
