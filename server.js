@@ -60,6 +60,19 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'ndis_directory.html'));
 });
 
+// Suburb autocomplete — searches all 7,337 geocoded suburbs
+let suburbList = null;
+app.get('/api/suburbs', (req, res) => {
+  const q = (req.query.q || '').toLowerCase().trim();
+  if (!q || q.length < 2) return res.json([]);
+  if (!suburbList) {
+    suburbList = Object.keys(suburbCoords).sort();
+  }
+  const prefix   = suburbList.filter(s => s.startsWith(q));
+  const contains = suburbList.filter(s => !s.startsWith(q) && s.includes(q));
+  res.json([...prefix, ...contains].slice(0, 10));
+});
+
 // Lightweight map pins — all providers that have coordinates, slim fields only
 let mapPinsCache = null;
 app.get('/api/map-pins', (req, res) => {
