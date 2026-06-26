@@ -60,16 +60,29 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'ndis_directory.html'));
 });
 
-// Suburb autocomplete — searches all 7,337 geocoded suburbs
-let suburbList = null;
+// Suburb autocomplete — searches all 7,337 geocoded suburbs, returns { name, state }
+let suburbIndex = null;
+function getSuburbIndex() {
+  if (suburbIndex) return suburbIndex;
+  // Build suburb→state map from provider data
+  const stateMap = {};
+  getProviders().forEach(p => {
+    const key = (p.suburb || '').toLowerCase().trim();
+    if (key && p.state && !stateMap[key]) stateMap[key] = p.state.toUpperCase();
+  });
+  suburbIndex = Object.keys(suburbCoords).sort().map(name => ({
+    name,
+    state: stateMap[name] || '',
+  }));
+  return suburbIndex;
+}
+
 app.get('/api/suburbs', (req, res) => {
   const q = (req.query.q || '').toLowerCase().trim();
   if (!q || q.length < 2) return res.json([]);
-  if (!suburbList) {
-    suburbList = Object.keys(suburbCoords).sort();
-  }
-  const prefix   = suburbList.filter(s => s.startsWith(q));
-  const contains = suburbList.filter(s => !s.startsWith(q) && s.includes(q));
+  const index = getSuburbIndex();
+  const prefix   = index.filter(s => s.name.startsWith(q));
+  const contains = index.filter(s => !s.name.startsWith(q) && s.name.includes(q));
   res.json([...prefix, ...contains].slice(0, 10));
 });
 
