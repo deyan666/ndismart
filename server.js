@@ -86,6 +86,22 @@ app.get('/api/suburbs', (req, res) => {
   res.json([...prefix, ...contains].slice(0, 10));
 });
 
+// Geocode a suburb or postcode using the local suburb_coords cache
+app.get('/api/geocode', (req, res) => {
+  const q = (req.query.q || '').toLowerCase().trim();
+  if (!q) return res.json(null);
+  if (suburbCoords[q]) return res.json(suburbCoords[q]);
+  // Fuzzy: try contains match
+  for (const [k, v] of Object.entries(suburbCoords)) {
+    if (k.startsWith(q) || q.startsWith(k)) return res.json(v);
+  }
+  // Postcode: look for a provider with matching postcode and return their suburb coords
+  const providers = getProviders();
+  const byPostcode = providers.find(p => (p.postcode || '') === q && p._coords);
+  if (byPostcode) return res.json(byPostcode._coords);
+  res.json(null);
+});
+
 // Lightweight map pins — all providers that have coordinates, slim fields only
 let mapPinsCache = null;
 app.get('/api/map-pins', (req, res) => {
