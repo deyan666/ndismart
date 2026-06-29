@@ -217,6 +217,10 @@ app.get('/api/providers', (req, res) => {
     results = results.filter(p => (p.state || '').toLowerCase() === state);
   }
 
+  if (req.query.featured === 'true') {
+    results = results.filter(p => p.featured);
+  }
+
   // Featured first, then alphabetical
   results = [...results].sort((a, b) => {
     if (a.featured && !b.featured) return -1;
