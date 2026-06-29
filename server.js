@@ -180,12 +180,17 @@ app.get('/api/providers', (req, res) => {
   let results = providers;
 
   if (q) {
-    results = results.filter(p =>
-      (p.name    || '').toLowerCase().includes(q) ||
-      (p.suburb  || '').toLowerCase().includes(q) ||
-      (p.state   || '').toLowerCase().includes(q) ||
-      (p.postcode|| '').includes(q)
-    );
+    const isPostcode = /^\d{4}$/.test(q);
+    if (isPostcode) {
+      // Exact postcode match only — avoids pulling in adjacent postcodes
+      results = results.filter(p => (p.postcode || '') === q);
+    } else {
+      // Suburb name or provider name — no postcode/state fuzzy matching
+      results = results.filter(p =>
+        (p.name   || '').toLowerCase().includes(q) ||
+        (p.suburb || '').toLowerCase().includes(q)
+      );
+    }
   }
 
   if (service) {
