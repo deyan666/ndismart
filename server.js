@@ -60,22 +60,31 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'ndis_directory.html'));
 });
 
-// Suburb autocomplete — searches all 7,337 geocoded suburbs, returns { name, state }
+// Suburb autocomplete — builds one entry per unique (name, state, postcode) combination
 let suburbIndex = null;
 function getSuburbIndex() {
   if (suburbIndex) return suburbIndex;
-  const stateMap = {};
-  const postcodeMap = {};
+  // Collect all (suburb, state, postcode) combos from providers
+  const variantMap = {}; // name -> Map of "state|postcode" -> {state, postcode}
   getProviders().forEach(p => {
-    const key = (p.suburb || '').toLowerCase().trim();
-    if (key && p.state    && !stateMap[key])    stateMap[key]    = p.state.toUpperCase();
-    if (key && p.postcode && !postcodeMap[key]) postcodeMap[key] = p.postcode;
+    const name = (p.suburb || '').toLowerCase().trim();
+    if (!name || !suburbCoords[name]) return;
+    const state    = (p.state    || '').toUpperCase();
+    const postcode = (p.postcode || '');
+    const key = `${state}|${postcode}`;
+    if (!variantMap[name]) variantMap[name] = new Map();
+    if (!variantMap[name].has(key)) variantMap[name].set(key, { state, postcode });
   });
-  suburbIndex = Object.keys(suburbCoords).sort().map(name => ({
-    name,
-    state:    stateMap[name]    || '',
-    postcode: postcodeMap[name] || '',
-  }));
+  const entries = [];
+  Object.keys(suburbCoords).sort().forEach(name => {
+    const variants = variantMap[name];
+    if (variants && variants.size > 0) {
+      variants.forEach(({ state, postcode }) => entries.push({ name, state, postcode }));
+    } else {
+      entries.push({ name, state: '', postcode: '' });
+    }
+  });
+  suburbIndex = entries;
   return suburbIndex;
 }
 
@@ -94,15 +103,15 @@ app.get('/api/suburbs', (req, res) => {
   res.json([...prefix, ...contains].slice(0, 10));
 });
 
-// Build a postcode → coords lookup from the suburb index
+// Build a postcode → coords lookup (first suburb with coords for that postcode)
 let postcodeToCoords = null;
 function getPostcodeToCoords() {
   if (postcodeToCoords) return postcodeToCoords;
-  const index = getSuburbIndex();
   postcodeToCoords = {};
-  index.forEach(s => {
-    if (s.postcode && !postcodeToCoords[s.postcode] && suburbCoords[s.name]) {
-      postcodeToCoords[s.postcode] = suburbCoords[s.name];
+  getProviders().forEach(p => {
+    const pc = (p.postcode || '');
+    if (pc && !postcodeToCoords[pc] && p._coords) {
+      postcodeToCoords[pc] = p._coords;
     }
   });
   return postcodeToCoords;
