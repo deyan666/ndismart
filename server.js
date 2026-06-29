@@ -83,24 +83,57 @@ app.get('/api/suburbs', (req, res) => {
   const q = (req.query.q || '').toLowerCase().trim();
   if (!q || q.length < 2) return res.json([]);
   const index = getSuburbIndex();
+  const isPostcode = /^\d+$/.test(q);
+  if (isPostcode) {
+    // postcode search — match by postcode prefix
+    const matches = index.filter(s => s.postcode && s.postcode.startsWith(q));
+    return res.json(matches.slice(0, 10));
+  }
   const prefix   = index.filter(s => s.name.startsWith(q));
   const contains = index.filter(s => !s.name.startsWith(q) && s.name.includes(q));
   res.json([...prefix, ...contains].slice(0, 10));
 });
 
+// Build a postcode → coords lookup from the suburb index
+let postcodeToCoords = null;
+function getPostcodeToCoords() {
+  if (postcodeToCoords) return postcodeToCoords;
+  const index = getSuburbIndex();
+  postcodeToCoords = {};
+  index.forEach(s => {
+    if (s.postcode && !postcodeToCoords[s.postcode] && suburbCoords[s.name]) {
+      postcodeToCoords[s.postcode] = suburbCoords[s.name];
+    }
+  });
+  return postcodeToCoords;
+}
+
 // Geocode a suburb or postcode using the local suburb_coords cache
 app.get('/api/geocode', (req, res) => {
   const q = (req.query.q || '').toLowerCase().trim();
   if (!q) return res.json(null);
+
+  // Exact suburb name match
   if (suburbCoords[q]) return res.json(suburbCoords[q]);
-  // Fuzzy: try contains match
-  for (const [k, v] of Object.entries(suburbCoords)) {
-    if (k.startsWith(q) || q.startsWith(k)) return res.json(v);
+
+  // Postcode match
+  if (/^\d+$/.test(q)) {
+    const pc = getPostcodeToCoords();
+    if (pc[q]) return res.json(pc[q]);
+    // Also scan providers
+    const byPostcode = getProviders().find(p => (p.postcode || '') === q && p._coords);
+    if (byPostcode) return res.json(byPostcode._coords);
+    return res.json(null);
   }
-  // Postcode: look for a provider with matching postcode and return their suburb coords
-  const providers = getProviders();
-  const byPostcode = providers.find(p => (p.postcode || '') === q && p._coords);
-  if (byPostcode) return res.json(byPostcode._coords);
+
+  // Prefix / contains match
+  for (const [k, v] of Object.entries(suburbCoords)) {
+    if (k.startsWith(q)) return res.json(v);
+  }
+  for (const [k, v] of Object.entries(suburbCoords)) {
+    if (k.includes(q)) return res.json(v);
+  }
+
   res.json(null);
 });
 
