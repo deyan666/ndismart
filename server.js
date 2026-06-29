@@ -21,17 +21,31 @@ function loadSuburbCoords() {
   }
 }
 
+// Featured provider overrides — matched by name (case-insensitive) + suburb
+const FEATURED_OVERRIDES = [
+  { name: 'We Love With Care Disability Services', suburb: 'Regents Park' },
+];
+
+function isFeaturedOverride(p) {
+  return FEATURED_OVERRIDES.some(f =>
+    (p.name || '').toLowerCase() === f.name.toLowerCase() &&
+    (p.suburb || '').toLowerCase() === f.suburb.toLowerCase()
+  );
+}
+
 function getProviders() {
   if (cachedProviders) return cachedProviders;
   loadSuburbCoords();
   try {
     const raw = fs.readFileSync(path.join(__dirname, 'providers_data.json'), 'utf8');
     const providers = JSON.parse(raw);
-    // Attach coords to each provider once at load time
     providers.forEach(p => {
       const key = (p.suburb || '').toLowerCase().trim();
       if (key && suburbCoords[key]) {
         p._coords = suburbCoords[key];
+      }
+      if (isFeaturedOverride(p)) {
+        p.featured = true;
       }
     });
     cachedProviders = providers;
